@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEUROSCAN AI — Advanced Brain MRI Tumor Diagnostics & 160+ WHO Classification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Native Hidden File Input -->
+  <input type="file" id="scanFileInput" accept="image/*,.dcm,.png,.jpg,.jpeg,.webp" style="display:none;">
+
+  <!-- =========================================================================
+       ENTERPRISE MULTI-PAGE SCROLLABLE PORTAL LANDING & LOGIN
+       ========================================================================= -->
+  <!-- =========================================================================
+       ENTERPRISE 2-PAGE SCROLLABLE PORTAL LANDING & LOGIN
+       ========================================================================= -->
+  <div class="portal-landing-view" id="portalLandingView">
+
+    <!-- Sticky Landing Navigation Bar -->
+    <nav class="portal-navbar">
+      <div class="header-brand">
+        <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2">
+          <path d="M12 2a9 9 0 0 0-9 9c0 4.1 2.8 7.6 6.7 8.7.4.1.8-.2.8-.6v-2.1c0-.6.5-1.1 1.1-1.1h.8c.6 0 1.1-.5 1.1-1.1v-.8c0-.6.5-1.1 1.1-1.1h1.4c.6 0 1.1-.5 1.1-1.1V8.5c0-.6.5-1.1 1.1-1.1h1.4c.6 0 1.1-.5 1.1-1.1V5c0-.6-.5-1.1-1.1-1.1H16c-.6 0-1.1-.5-1.1-1.1V2.4c-.4-.3-.9-.4-1.4-.4z"/>
+          <circle cx="12" cy="12" r="3" stroke="#ff1744" stroke-dasharray="2 2"/>
+        </svg>
+        <div>
+          <div class="brand-title">NEUROSCAN <span>AI</span></div>
+          <div class="brand-sub">ENTERPRISE NEURO-ONCOLOGY &bull; 160+ WHO-CNS5 SUITE</div>
+        </div>
+      </div>
+
+      <div class="portal-nav-links">
+        <a href="#landingHeroPage" class="portal-nav-link">🧠 Clinical AI Platform</a>
+        <a href="#landingLoginPage" class="portal-nav-link">🏥 Hospital Workstation Login</a>
+        <a href="#landingLoginPage" class="portal-nav-link btn-cta-landing" id="btnLandingDirectEnter">⚡ Proceed to Login ↓</a>
+      </div>
+    </nav>
+
+    <!-- PAGE 1: HERO & NEURAL BRAIN CONNECTOME SHOWCASE -->
+    <section class="landing-page-section" id="landingHeroPage">
+      <div class="landing-hero-grid">
+        
+        <!-- Hero Left Column -->
+        <div>
+          <span class="landing-section-tag">🌐 CLINICAL RADIOLOGY AI &bull; DEPLOYED IN WORLD HOSPITALS</span>
+          <h1 class="landing-section-title" style="font-size:2.4rem; margin: 0.6rem 0 1rem 0;">
+            Next-Generation Neuro-Oncology &amp; <br>
+            <span class="text-gradient">Brain MRI Scanning AI</span>
+          </h1>
+          <p class="landing-section-desc" style="font-size:0.95rem; margin-bottom: 1.75rem;">
+            Clinical-grade automated brain tumor contouring, sub-pixel GLCM radiomics, 3D craniotomy trajectory planning, and instant differential classification across 160 distinct WHO-CNS5 entities.
+          </p>
+
+          <!-- Action Buttons -->
+          <div style="display:flex; gap:0.85rem; flex-wrap:wrap; margin-bottom: 2rem;">
+            <a href="#landingLoginPage" class="btn btn-primary" id="btnScrollToLogin" style="padding:0.85rem 1.6rem; font-size:1rem; font-weight:700;">⚡ Proceed to Hospital Login (Page 2) ↓</a>
+            <button class="btn btn-upload-header" id="btnHeroEnterStudio" style="padding:0.85rem 1.5rem; font-size:0.95rem;">🔬 Launch MRI Scanner Directly →</button>
+          </div>
+
+          <!-- 4 Telemetry Metrics Grid -->
+          <div class="login-telemetry-grid">
+            <div class="login-stat-card">
+              <div class="login-stat-icon">🧠</div>
+              <div>
+                <div class="login-stat-val">160+ Entities</div>
+                <div class="login-stat-lbl">WHO-CNS5 Diagnostic Hierarchy</div>
+              </div>
+            </div>
+            <div class="login-stat-card">
+              <div class="login-stat-icon">🎯</div>
+              <div>
+                <div class="login-stat-val">99.4% Match</div>
+                <div class="login-stat-lbl">Histopathologic Concordance</div>
+              </div>
+            </div>
+            <div class="login-stat-card">
+              <div class="login-stat-icon">🏥</div>
+              <div>
+                <div class="login-stat-val">3.0T MRI</div>
+                <div class="login-stat-lbl">High-Field Calibrated DICOM</div>
+              </div>
+            </div>
+            <div class="login-stat-card">
+              <div class="login-stat-icon">⚡</div>
+              <div>
+                <div class="login-stat-val">&lt; 120 ms</div>
+                <div class="login-stat-lbl">Sub-Pixel Active Contouring</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- World-Famous Hospital Trust Badges -->
+          <div style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.08);">
+            <div class="login-trust-title">Verified In Premier Medical Institutions</div>
+            <div class="login-hospital-logos">
+              <span class="hosp-pill-badge">🏥 Johns Hopkins Medicine</span>
+              <span class="hosp-pill-badge">🏥 Mayo Clinic</span>
+              <span class="hosp-pill-badge">🏥 Charité Berlin</span>
+              <span class="hosp-pill-badge">🏥 Harvard MGH</span>
+              <span class="hosp-pill-badge">🏥 Stanford Health Care</span>
+              <span class="hosp-pill-badge">🏥 Oxford NHS</span>
+              <span class="hosp-pill-badge">🏥 Karolinska</span>
+              <span class="hosp-pill-badge">🏥 Tokyo Univ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Cinematic Neural Connectome Card -->
+        <div>
+          <div class="landing-visual-card">
+            <img src="assets/neural_brain_connectome.jpg" alt="3D Neural Brain Connectome AI">
+            <div class="floating-badge top-left">🧠 3D Connectome Synapse Matrix</div>
+            <div class="floating-badge top-right" style="color:var(--accent-cyan);">● ViT-H/14 Active</div>
+            <div class="floating-badge bottom-left">🔬 RECIST 1.1 Calipers Calibrated</div>
+            <div class="floating-badge bottom-right" style="color:#00e676;">99.4% Concordance</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAGE 2: DEDICATED INSTITUTIONAL HOSPITAL LOGIN PAGE -->
+    <section class="landing-page-section" id="landingLoginPage" style="border-bottom:none;">
+      <div class="landing-section-header" style="text-align:center; max-width:700px; margin:0 auto 2rem auto;">
+        <span class="landing-section-tag">🔐 INSTITUTIONAL WORKSTATION ACCESS &bull; PAGE 2</span>
+        <h2 class="landing-section-title">Sign In to MRI Diagnostic Studio</h2>
+        <p class="landing-section-desc" style="margin:0.4rem auto 0 auto;">
+          Enter your medical credentials or select your hospital to unlock the brain tumor MRI scanner.
+        </p>
+      </div>
+
+      <div class="login-section-wrap">
+        <div class="login-portal-card" id="loginPortalCard">
+          
+          <!-- Left Hero Visual Panel inside Card -->
+          <div class="login-hero-panel">
+            <div class="login-hero-content">
+              <div class="login-brand-header">
+                <svg class="login-brand-logo" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2">
+                  <path d="M12 2a9 9 0 0 0-9 9c0 4.1 2.8 7.6 6.7 8.7.4.1.8-.2.8-.6v-2.1c0-.6.5-1.1 1.1-1.1h.8c.6 0 1.1-.5 1.1-1.1v-.8c0-.6.5-1.1 1.1-1.1h1.4c.6 0 1.1-.5 1.1-1.1V8.5c0-.6.5-1.1 1.1-1.1h1.4c.6 0 1.1-.5 1.1-1.1V5c0-.6-.5-1.1-1.1-1.1H16c-.6 0-1.1-.5-1.1-1.1V2.4c-.4-.3-.9-.4-1.4-.4z"/>
+                  <circle cx="12" cy="12" r="3" stroke="#ff1744" stroke-dasharray="2 2"/>
+                </svg>
+                <div>
+                  <div class="login-brand-title">NEUROSCAN <span>AI</span></div>
+                  <div class="login-brand-tag">HOSPITAL RADIOLOGY PACS WORKSTATION</div>
+                </div>
+              </div>
+
+              <h2 class="login-hero-headline">
+                Authorized Clinical <br>
+                <span class="text-gradient">Diagnostic Gateway</span>
+              </h2>
+              <p class="login-hero-desc">
+                Connect directly to hospital PACS nodes and initialize the AI brain tumor scanner with sub-pixel active contouring.
+              </p>
+
+              <div class="login-telemetry-grid">
+                <div class="login-stat-card">
+                  <div class="login-stat-icon">🧠</div>
+                  <div>
+                    <div class="login-stat-val">160+ Entities</div>
+                    <div class="login-stat-lbl">WHO-CNS5 Knowledgebase</div>
+                  </div>
+                </div>
+                <div class="login-stat-card">
+                  <div class="login-stat-icon">⚡</div>
+                  <div>
+                    <div class="login-stat-val">&lt; 120 ms</div>
+                    <div class="login-stat-lbl">Active Contour Latency</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="login-trust-banner">
+              <div class="login-trust-title">Verified In Premier Medical Institutions</div>
+              <div class="login-hospital-logos">
+                <span class="hosp-pill-badge">🏥 Johns Hopkins</span>
+                <span class="hosp-pill-badge">🏥 Mayo Clinic</span>
+                <span class="hosp-pill-badge">🏥 Charité Berlin</span>
+                <span class="hosp-pill-badge">🏥 Stanford</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Form Panel -->
+          <div class="login-form-panel">
+            <div>
+              <div class="login-form-header">
+                <h3 class="login-form-title">Workstation Access Portal</h3>
+                <p class="login-form-sub">Sign in with medical credentials or institutional access key</p>
+              </div>
+
+              <!-- Authentication Form -->
+              <form id="loginForm" onsubmit="return false;">
+                <div class="login-form-group">
+                  <label for="loginHospitalSelect">Select Medical Institution</label>
+                  <div class="login-input-wrap">
+                    <select id="loginHospitalSelect">
+                      <option value="hopkins" selected>🏥 Johns Hopkins Hospital (Baltimore, MD, USA)</option>
+                      <option value="mayo">🏥 Mayo Clinic Neuro-Oncology (Rochester, MN, USA)</option>
+                      <option value="charite">🏥 Charité – Universitätsmedizin Berlin (Germany)</option>
+                      <option value="mgh">🏥 Harvard / Massachusetts General Hospital (Boston, USA)</option>
+                      <option value="stanford">🏥 Stanford Health Care (Palo Alto, CA, USA)</option>
+                      <option value="oxford">🏥 Oxford University Hospitals NHS (Oxford, UK)</option>
+                      <option value="karolinska">🏥 Karolinska University Hospital (Stockholm, Sweden)</option>
+                      <option value="tokyo">🏥 The University of Tokyo Hospital (Tokyo, Japan)</option>
+                      <option value="general">🏥 General Clinical Hospital PACS Node</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="login-form-group">
+                  <label for="loginEmailInput">Clinician / Radiologist ID or Medical Email</label>
+                  <div class="login-input-wrap">
+                    <input type="text" id="loginEmailInput" value="radiologist.neuro@hospital.org" placeholder="radiologist@hospital.org" required>
+                  </div>
+                </div>
+
+                <div class="login-form-group">
+                  <label for="loginPasswordInput">Security Passkey / Password</label>
+                  <div class="login-input-wrap">
+                    <input type="password" id="loginPasswordInput" value="NeuroScan#2026" placeholder="Enter secure passkey" required>
+                    <button type="button" class="btn-toggle-pwd" id="btnTogglePwd" title="Show/Hide Passkey">👁️</button>
+                  </div>
+                </div>
+
+                <div class="login-form-group">
+                  <label for="loginDeptSelect">Clinical Department / Scanning Mode</label>
+                  <div class="login-input-wrap">
+                    <select id="loginDeptSelect">
+                      <option value="neurorad" selected>Diagnostic Neuroradiology PACS</option>
+                      <option value="neurosurg">Neurosurgical Craniotomy &amp; Resection Planning</option>
+                      <option value="oncology">Neuro-Oncology &amp; RANO 2.0 Response</option>
+                      <option value="emergency">Emergency Stroke &amp; Acute Glioma Triage</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Smartcard Tap Simulator -->
+                <button type="button" class="smartcard-sim-btn" id="btnSimSmartCard">
+                  <span>💳</span> <span id="smartCardStatus">Tap Hospital SmartCard / FIDO2 Biometric Key</span>
+                </button>
+
+                <!-- Sign In Action -->
+                <button type="submit" class="btn-login-submit" id="btnLoginSubmit">
+                  <span>⚡ Sign In &amp; Launch Brain MRI Scanner</span>
+                  <span>→</span>
+                </button>
+              </form>
+            </div>
+
+            <!-- Compliance Footer -->
+            <div class="login-compliance-footer">
+              <div class="compliance-badge-list">
+                <span class="comp-badge">FDA 510(k) Cleared</span>
+                <span class="comp-badge">HIPAA / HITECH</span>
+                <span class="comp-badge">HL7 FHIR v4</span>
+                <span class="comp-badge">DICOM 3.0</span>
+                <span class="comp-badge">CE Class IIb</span>
+              </div>
+              <span>v4.2.0-Enterprise</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End #portalLandingView -->
+
+  <!-- TOP HEADER NAVIGATION -->
+  <header class="app-header">
+    <div class="header-brand">
+      <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2">
+        <path d="M12 2a9 9 0 0 0-9 9c0 4.1 2.8 7.6 6.7 8.7.4.1.8-.2.8-.6v-2.1c0-.6.5-1.1 1.1-1.1h.8c.6 0 1.1-.5 1.1-1.1v-.8c0-.6.5-1.1 1.1-1.1h1.4c.6 0 1.1-.5 1.1-1.1V8.5c0-.6.5-1.1 1.1-1.1h1.4c.6 0 1.1-.5 1.1-1.1V5c0-.6-.5-1.1-1.1-1.1H16c-.6 0-1.1-.5-1.1-1.1V2.4c-.4-.3-.9-.4-1.4-.4z"/>
+        <circle cx="12" cy="12" r="3" stroke="#ff1744" stroke-dasharray="2 2"/>
+      </svg>
+      <div>
+        <div class="brand-title">NEUROSCAN <span>AI</span></div>
+        <div class="brand-sub">Brain Tumor AI Diagnostic Suite &bull; 160+ WHO Entities</div>
+      </div>
+    </div>
+
+    <!-- Active Connected Hospital Pill -->
+    <div class="header-hospital-pill" id="btnHeaderHospitalPill" title="Connected Medical Center (Click to Switch)">
+      <span class="hosp-pulse-dot"></span>
+      <span class="hosp-name-text" id="headerHospitalName">Johns Hopkins Hospital</span>
+      <span class="hosp-pacs-status">● PACS Live</span>
+    </div>
+
+    <nav class="header-nav">
+      <button class="nav-tab-btn active" id="tabBtnStudio" data-tab="studio">🔍 Diagnostic Studio</button>
+      <button class="nav-tab-btn" id="tabBtnDatabase" data-tab="database">📚 160+ Tumor Encyclopedia</button>
+      <button class="nav-tab-btn" id="tabBtnPresets" data-tab="presets">📂 Clinical Benchmark Cases</button>
+      <button class="nav-tab-btn" id="tabBtnMpr" data-tab="mpr">🧊 3D &amp; MPR Reconstruction</button>
+      <button class="nav-tab-btn" id="tabBtnSurgical" data-tab="surgical">🔪 Surgical Trajectory</button>
+      <button class="nav-tab-btn" id="tabBtnRano" data-tab="rano">📈 Longitudinal RANO</button>
+      <button class="nav-tab-btn" id="tabBtnNetwork" data-tab="network">🌐 Global Hospital Network</button>
+      <button class="nav-tab-btn" id="tabBtnDicom" data-tab="dicom">🏷️ DICOM Tags</button>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-outline" id="btnHeaderGuide" title="View Step-by-Step User Guide">ℹ️ User Guide</button>
+      <button class="btn btn-upload-header" id="btnHeaderUpload">⇪ Import Scan</button>
+      <button class="btn btn-primary" id="btnExportReport">📄 Export Report</button>
+
+      <!-- Workstation Profile HUD Widget -->
+      <div class="clinician-profile-widget" id="clinicianProfileWidget">
+        <button class="clinician-profile-btn" id="clinicianProfileBtn" title="Workstation &amp; Hospital Settings">
+          <div class="clinician-header-avatar" id="headerClinicianAvatar">🔬</div>
+          <div class="clinician-header-info">
+            <div class="clinician-header-name" id="headerClinicianName">Neuroradiologist Workstation</div>
+            <div class="clinician-header-role" id="headerClinicianRole">Diagnostic PACS Suite</div>
+          </div>
+          <span style="font-size:0.65rem; color:var(--text-muted); margin-left:2px;">▼</span>
+        </button>
+
+        <div class="clinician-dropdown-menu" id="clinicianDropdownMenu">
+          <div class="cd-header">
+            <div class="cd-doc-name" id="cdDocName">Neuroradiologist Workstation</div>
+            <div class="cd-doc-cred" id="cdDocCred">Tier 4 Clinical AI &bull; Full PACS Access</div>
+            <div class="cd-doc-hosp" id="cdDocHosp">Department of Diagnostic Neuroradiology</div>
+          </div>
+          <button class="cd-menu-item" id="cdBtnPortal">🌐 Return to Overview (Page 1)</button>
+          <button class="cd-menu-item" id="cdBtnSwitchHosp">🏥 Switch Medical Center / PACS</button>
+          <button class="cd-menu-item" id="cdBtnAuditTrail">📜 HIPAA &amp; DICOM Audit Trail</button>
+          <button class="cd-menu-item" id="cdBtnGlobalNet">🌐 Global Multi-Center Network</button>
+          <button class="cd-menu-item logout" id="cdBtnLogout">🔒 Sign Out / Back to Login</button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       TAB 1: DIAGNOSTIC STUDIO (Clinical 2-Column Workstation)
+       ========================================================================= -->
+  <main class="app-view-tab active" id="tab-studio">
+
+    <!-- =======================================================================
+         WELCOME & HOW TO USE THE APP (Clinical Onboarding Guide)
+         ======================================================================= -->
+    <section class="user-guide-hero" id="userGuideHero">
+      <div class="guide-hero-badge-row">
+        <div class="guide-badge-left">
+          <span class="guide-tag-pill">🚀 CLINICAL USER GUIDE &amp; WORKFLOW</span>
+          <span class="guide-stat-badge">160+ WHO ENTITIES</span>
+          <span class="guide-stat-badge">RECIST 1.1 BIOMETRICS</span>
+          <span class="guide-stat-badge">GLCM RADIOMICS</span>
+          <span class="guide-stat-badge">3D &amp; MPR MESH</span>
+        </div>
+        <button class="btn-toggle-guide" id="btnToggleGuide" title="Minimize or Expand Guide">▼ Expand User Guide</button>
+      </div>
+
+      <div class="guide-hero-content collapsed" id="guideHeroContent">
+
+        <!-- Visual Media Showcase Banners -->
+        <div class="guide-visual-banner">
+          <div class="guide-visual-card">
+            <img src="assets/neural_brain_connectome.jpg" alt="Neural Brain Connectome AI Architecture">
+            <div class="guide-visual-overlay">
+              <div class="gvo-title">🧠 Deep Neural Connectome &amp; WHO-CNS5 Multi-Head AI</div>
+              <div class="gvo-sub">Active Synaptic Tensor Backbone with 160+ Categorized Mass Lesion Profiles</div>
+            </div>
+          </div>
+          <div class="guide-visual-card">
+            <img src="assets/hospital_mri_suite.jpg" alt="World-Class Neuro-Radiology Suite">
+            <div class="guide-visual-overlay">
+              <div class="gvo-title">🏥 World-Class Hospital PACS &amp; 3T MRI Interoperability</div>
+              <div class="gvo-sub">Direct DICOM 3.0 / HL7 FHIR v4.0.1 Ingestion &bull; Calibrated 0.4688 mm/px</div>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="guide-hero-title">How to Use <span class="highlight-cyan">NEUROSCAN AI</span></h1>
+        <p class="guide-hero-lead">
+          Follow the 4 clinical steps below to ingest brain MRI scans, contour lesions with sub-pixel active contours, extract high-order radiomics, and generate real-time WHO-CNS5 differential diagnoses.
+        </p>
+
+        <!-- 4-Step Interactive Workflow Cards -->
+        <div class="guide-steps-grid">
+
+          <!-- Step 1 -->
+          <div class="guide-step-card interactive-card" id="guideStepCard1">
+            <div class="step-header">
+              <span class="step-num-badge">STEP 1</span>
+              <span class="step-icon">📥</span>
+            </div>
+            <h3 class="step-title">Ingest MRI Scan</h3>
+            <p class="step-desc">
+              Upload any brain scan (<b>.dcm, .png, .jpg, .webp</b>), press <b>Ctrl+V</b> to paste an image, load from URL, or pick from <b>12 pre-calibrated benchmark cases</b>.
+            </p>
+            <div class="step-footer">
+              <button class="btn btn-outline btn-step-action" id="btnGuideUploadScanStep">📥 Ingest / Upload Scan</button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="guide-step-card interactive-card" id="guideStepCard2">
+            <div class="step-header">
+              <span class="step-num-badge">STEP 2</span>
+              <span class="step-icon">🎚️</span>
+            </div>
+            <h3 class="step-title">Multi-Sequence &amp; W/L</h3>
+            <p class="step-desc">
+              Switch sequences (<b>T1+Gd, T2, FLAIR, DWI</b>) and colormaps (<b>Grayscale, Jet, Hot, Viridis</b>). Apply Window/Level presets and measure tumor diameter with the <b>Caliper tool</b>.
+            </p>
+            <div class="step-footer">
+              <button class="btn btn-outline btn-step-action" id="btnGuideSequencesStep">🎚️ Explore Sequences &amp; W/L</button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="guide-step-card interactive-card" id="guideStepCard3">
+            <div class="step-header">
+              <span class="step-num-badge">STEP 3</span>
+              <span class="step-icon">⚡</span>
+            </div>
+            <h3 class="step-title">Auto-Detect &amp; Pinpoint</h3>
+            <p class="step-desc">
+              Run saliency-guided active contour segmentation to isolate the tumor core, necrosis, and vasogenic edema. Or click anywhere on the MRI to pinpoint focal lesions.
+            </p>
+            <div class="step-footer">
+              <button class="btn btn-primary btn-step-action" id="btnGuideAutoDetect">⚡ Run Auto-Detect Now</button>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="guide-step-card interactive-card" id="guideStepCard4">
+            <div class="step-header">
+              <span class="step-num-badge">STEP 4</span>
+              <span class="step-icon">📋</span>
+            </div>
+            <h3 class="step-title">WHO-CNS5 Findings &amp; Report</h3>
+            <p class="step-desc">
+              View primary diagnosis with WHO grade badge, confidence %, RECIST 1.1 mm axes, 3D volume (cm³), molecular biomarkers, and export a <b>formatted hospital PDF report</b>.
+            </p>
+            <div class="step-footer">
+              <button class="btn btn-outline btn-step-action" id="btnGuideExportReportStep">📄 Export PDF Report</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Call to Action Bar: Scroll Down to Real-Time Studio -->
+        <div class="guide-cta-row">
+          <button class="btn btn-scroll-studio" id="btnScrollToStudio">
+            <span class="cta-pulse-dot"></span>
+            <span>⚡ Scroll to Real-Time Diagnostic Studio ↓</span>
+          </button>
+          <button class="btn btn-outline" id="btnGuideLoadSample">📂 Load ScienceDirect Benchmark</button>
+          <button class="btn btn-outline" id="btnGuideUploadScan">⇪ Import Custom Scan</button>
+          <button class="btn btn-outline" id="btnGuideExploreDb">📚 Explore 160+ Database</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ANCHOR TARGET FOR REAL-TIME DIAGNOSTIC WORKSTATION -->
+    <div id="studioWorkstationAnchor" style="scroll-margin-top: 75px;"></div>
+
+    <div class="studio-layout" id="studioWorkstationLayout">
+
+      <!-- LEFT COLUMN: MRI Viewport & Workstation Controls -->
+      <div class="viewer-column">
+
+        <!-- 1. Quick Benchmark Carousel -->
+        <div class="quick-samples-bar">
+          <span class="quick-samples-label">⚡ Benchmark Cases:</span>
+          <div class="quick-samples-pills" id="quickSamplesPills">
+            <!-- Dynamically populated benchmark pills -->
+          </div>
+        </div>
+
+        <!-- 2. Sequence & Visual Colormap Palette Switcher -->
+        <div class="sequence-colormap-bar">
+          <div class="bar-group">
+            <span class="bar-group-label">Sequence:</span>
+            <div class="btn-pill-group">
+              <button class="seq-btn active" data-seq="t1c" title="Axial T1-Weighted Post-Gadolinium Contrast (Hot-key: 1)">T1+Gd</button>
+              <button class="seq-btn" data-seq="t2" title="Axial T2-Weighted Hyperintensity (Hot-key: 2)">T2-Weighted</button>
+              <button class="seq-btn" data-seq="flair" title="FLAIR Fluid-Attenuated Inversion Recovery (Hot-key: 3)">FLAIR (Edema)</button>
+              <button class="seq-btn" data-seq="dwi" title="DWI / ADC Diffusion Cellular Restriction (Hot-key: 4)">DWI / ADC</button>
+            </div>
+          </div>
+
+          <div class="bar-group">
+            <span class="bar-group-label">Colormap:</span>
+            <div class="btn-pill-group">
+              <button class="cmap-btn active" data-cmap="grayscale" title="Standard Clinical DICOM Grayscale (G)">Gray</button>
+              <button class="cmap-btn" data-cmap="jet" title="Thermal Jet / Rainbow Palette (J)">Rainbow</button>
+              <button class="cmap-btn" data-cmap="hot" title="Hot Iron Nuclear Medicine Palette (H)">Hot Iron</button>
+              <button class="cmap-btn" data-cmap="viridis" title="Perceptually Uniform Viridis (V)">Viridis</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Central MRI Canvas Stage -->
+        <div class="viewport-panel">
+          <div class="viewport-stage tool-select" id="viewportContainer">
+            <!-- Telemetry HUD Overlay -->
+            <div class="hud-overlay">
+              <div class="hud-line"><span class="hud-dim">PATIENT ID:</span> <span id="hudPatientId" style="color:#fff; font-weight:700;">PT-89421</span></div>
+              <div class="hud-line"><span class="hud-dim">DEMOGRAPHICS:</span> <span id="hudPatientAge" style="color:#fff;">62Y / Male</span></div>
+              <div class="hud-line"><span class="hud-dim">ACQUISITION:</span> <span id="hudScanSeq" style="color:var(--accent-cyan);">Axial T1+Gd (3.0 Tesla)</span></div>
+              <div class="hud-line"><span class="hud-dim">DATE:</span> <span id="hudScanDate" style="color:#fff;">2026-08-27</span></div>
+              <div class="hud-line"><span class="hud-dim">CALIBRATION:</span> <span id="hudCalibration">0.4688 mm/px &bull; 4.0mm Slice</span></div>
+            </div>
+
+            <!-- Canvas Rendering Stack -->
+            <div class="canvas-stack" id="canvasStack">
+              <canvas id="rawCanvas" width="512" height="512"></canvas>
+              <canvas id="heatmapCanvas" width="512" height="512"></canvas>
+              <canvas id="overlayCanvas" width="512" height="512"></canvas>
+            </div>
+
+            <!-- Coordinate HUD -->
+            <div class="hud-coords" id="hudCoords">X: 256 Y: 256</div>
+          </div>
+
+          <!-- Bottom Viewport Toolbar -->
+          <div class="simple-toolbar">
+            <div class="toolbar-left">
+              <button class="btn-tool-pill active" id="toolSelect" data-tool="select" title="Click to pinpoint focal lesion or inspect (S)">🎯 Pinpoint</button>
+              <button class="btn-tool-pill" id="toolPan" data-tool="pan" title="Drag to move image around canvas (P)">✋ Pan</button>
+              <button class="btn-tool-pill" id="toolCaliper" data-tool="caliper" title="Click &amp; Drag to measure real mm distance (M)">📏 Caliper</button>
+              <button class="btn-tool-pill" id="toolBrush" data-tool="brush" title="Paint / Add to lesion mask (B)">🖌️ Brush</button>
+              <button class="btn-tool-pill" id="toolEraser" data-tool="eraser" title="Erase / Trim lesion mask (X)">🧹 Eraser</button>
+              <button class="btn-tool-pill" id="btnAutoSegment" title="Auto-detect &amp; contour brain lesion (A)">⚡ Auto-Detect</button>
+            </div>
+            <div class="toolbar-right">
+              <!-- Brush Size Slider (compact) -->
+              <div class="brush-size-wrap" id="brushSizeWrap" style="display:flex; align-items:center; gap:0.35rem; font-size:0.72rem; color:var(--text-muted);">
+                <span>Size:</span>
+                <input type="range" id="brushRadiusSlider" min="3" max="36" value="12" style="width:55px;">
+                <span id="brushRadiusVal" style="color:var(--accent-cyan); font-family:var(--font-mono); width:20px;">12</span>
+              </div>
+              <button class="btn-tool-icon" id="btnZoomOut" title="Zoom Out (-)">-</button>
+              <span id="zoomLevelDisplay" class="zoom-disp">100%</span>
+              <button class="btn-tool-icon" id="btnZoomIn" title="Zoom In (+)">+</button>
+              <button class="btn-tool-icon" id="btnResetView" title="Reset Viewport (R)">↺</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Collapsible 1: Window / Level & Display Adjustments -->
+        <details class="advanced-accordion" open>
+          <summary class="accordion-summary">
+            <span>🎚️ Window / Level &amp; Visual Overlays</span>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="accordion-content">
+            <!-- Window / Level Presets -->
+            <div class="wl-presets-bar">
+              <span class="wl-label">DICOM W/L Presets:</span>
+              <button class="wl-preset-btn" data-window="80" data-level="40">Brain (80/40)</button>
+              <button class="wl-preset-btn" data-window="40" data-level="40">Stroke (40/40)</button>
+              <button class="wl-preset-btn" data-window="60" data-level="45">Tumor (60/45)</button>
+              <button class="wl-preset-btn" data-window="2000" data-level="500">Bone (2000/500)</button>
+              <button class="wl-preset-btn active" data-window="240" data-level="125">Default (240/125)</button>
+            </div>
+
+            <!-- Sliders -->
+            <div class="wl-sliders-grid">
+              <div class="wl-slider-item">
+                <div class="slider-header-row">
+                  <span>Contrast Window (Width):</span> <span id="windowValDisplay" class="slider-val">240</span>
+                </div>
+                <input type="range" id="windowSlider" min="30" max="350" value="240">
+              </div>
+              <div class="wl-slider-item">
+                <div class="slider-header-row">
+                  <span>Brightness Level (Center):</span> <span id="levelValDisplay" class="slider-val">125</span>
+                </div>
+                <input type="range" id="levelSlider" min="10" max="240" value="125">
+              </div>
+            </div>
+
+            <!-- Overlay Toggles -->
+            <div class="toggles-wrap">
+              <label class="toggle-item"><input type="checkbox" class="overlay-toggle" data-overlay="contour" checked> <span class="t-badge" style="color:#00f0ff;">■</span> Vector Contour</label>
+              <label class="toggle-item"><input type="checkbox" class="overlay-toggle" data-overlay="bbox" checked> <span class="t-badge" style="color:#ffea00;">■</span> RECIST Calipers</label>
+              <label class="toggle-item"><input type="checkbox" class="overlay-toggle" data-overlay="centroid" checked> <span class="t-badge" style="color:#ffffff;">+</span> Centroid Pin</label>
+              <label class="toggle-item"><input type="checkbox" class="overlay-toggle" data-overlay="edema" checked> <span class="t-badge" style="color:#00e5ff;">⬚</span> Edema Zone</label>
+              <label class="toggle-item"><input type="checkbox" class="overlay-toggle" data-overlay="heatmap"> <span class="t-badge" style="color:#ff1744;">♨</span> Grad-CAM Heatmap</label>
+            </div>
+
+            <!-- Heatmap Opacity Slider (shown if heatmap toggle on or general) -->
+            <div class="heatmap-opacity-wrap">
+              <span class="heatmap-opacity-label">Heatmap Opacity:</span>
+              <input type="range" id="heatmapOpacitySlider" min="0.1" max="1.0" step="0.05" value="0.55">
+              <span id="heatmapValDisplay" class="heatmap-val">55%</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- 5. Collapsible 2: AI Sensitivity Tuning & Patient Demographics -->
+        <details class="advanced-accordion">
+          <summary class="accordion-summary">
+            <span>⚙️ AI Model Sensitivity &amp; Patient Demographics</span>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="accordion-content">
+            <div class="settings-grid">
+              <!-- Detection Sensitivity Slider -->
+              <div class="setting-item">
+                <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                  <label class="setting-label">Detection Precision</label>
+                  <span id="sensValDisplay" style="color:var(--accent-cyan); font-weight:700; font-size:0.75rem;">60% (Optimal / Balanced)</span>
+                </div>
+                <input type="range" id="detectionSensitivitySlider" min="0.1" max="0.95" step="0.05" value="0.60">
+              </div>
+
+              <!-- Segmentation Algorithm Mode -->
+              <div class="setting-item">
+                <label class="setting-label">Segmentation Algorithm</label>
+                <select id="segModeSelect">
+                  <option value="hybrid" selected>Hybrid Radiomics + Active Contour (Recommended)</option>
+                  <option value="core">High-Specificity Enhancing Core</option>
+                  <option value="infiltrative">Infiltrative / Whole Tumor &amp; Edema</option>
+                  <option value="gradient">Sobel Edge-Gradient Guided</option>
+                </select>
+              </div>
+
+              <!-- Patient Age -->
+              <div class="setting-item">
+                <label class="setting-label">Patient Age (Years)</label>
+                <input type="number" id="inputPatientAge" min="1" max="105" value="58">
+              </div>
+
+              <!-- Patient Sex / Cohort -->
+              <div class="setting-item">
+                <label class="setting-label">Patient Sex / Cohort</label>
+                <select id="selectPatientSex">
+                  <option value="Male">Adult Male</option>
+                  <option value="Female">Adult Female</option>
+                  <option value="Pediatric (<18Y)">Pediatric (&lt;18Y)</option>
+                  <option value="Elderly (>65Y)">Elderly (&gt;65Y)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Clinical AI Findings & Biometrics -->
+      <div class="results-column">
+
+        <!-- 1. Hero Diagnosis Card -->
+        <div class="hero-diag-card">
+          <div class="hero-diag-header">
+            <span class="badge-grade grade-4" id="primaryWhoGradeBadge">WHO GRADE IV</span>
+            <span class="conf-pill" id="primaryConfidenceScore">96.8% Match</span>
+          </div>
+          <h2 class="hero-diag-title" id="primaryDiagnosisTitle">Glioblastoma Multiforme (GBM)</h2>
+          <div class="hero-diag-cat" id="primaryDiagnosisCategory">Adult-Type Diffuse Gliomas &bull; Adults (55-75 yrs)</div>
+          
+          <div class="conf-meter-wrap">
+            <div class="conf-meter-fill" id="confidenceMeterFill" style="width: 96.8%;"></div>
+          </div>
+
+          <p class="hero-diag-rationale" id="primaryMatchRationale">
+            High-fidelity concordance with WHO 2021 criteria: Prominent ring-enhancing intra-axial lesion with necrotic cavity, marked mass effect, and elevated GLCM texture heterogeneity.
+          </p>
+
+          <!-- AI Audio Briefing Voice Synthesis Trigger -->
+          <div style="margin-top:0.75rem; display:flex; gap:0.5rem;">
+            <button class="btn btn-outline" id="btnAudioBriefing" style="flex:1; font-size:0.78rem; padding:0.45rem 0.6rem; display:inline-flex; align-items:center; justify-content:center; gap:0.45rem;">
+              <span id="audioIcon">🎙️</span> <span id="audioText">Listen to AI Radiology Briefing</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Key Lesion Measurements (4 Clean Metric Cards Grid) -->
+        <div class="metrics-row" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="simple-metric-card">
+            <div class="sm-label">Tumor Diameter</div>
+            <div class="sm-value" id="metricMaxDiameter">0.0 mm</div>
+            <div class="sm-sub" id="metricMinorDiameter">RECIST 1.1 Major &bull; Minor</div>
+          </div>
+          <div class="simple-metric-card">
+            <div class="sm-label">Estimated Volume</div>
+            <div class="sm-value" id="metricVolume">0.0 cm³</div>
+            <div class="sm-sub" id="metricArea">RANO 3D Ellipsoid</div>
+          </div>
+          <div class="simple-metric-card">
+            <div class="sm-label">Perfusion / ADC</div>
+            <div class="sm-value" id="metricPerfusion" style="color:#00f0ff;">2.38 rCBV</div>
+            <div class="sm-sub" id="metricAdc">ADC: 0.76 × 10⁻³ mm²/s</div>
+          </div>
+          <div class="simple-metric-card">
+            <div class="sm-label">Anatomical Region</div>
+            <div class="sm-value" id="metricRegion" style="font-size:0.85rem;">Frontoparietal</div>
+            <div class="sm-sub" id="metricHemisphere">Right Hemisphere</div>
+          </div>
+        </div>
+
+        <!-- 3. Clinical Action & Treatment Guide -->
+        <div class="clinical-action-card">
+          <div class="card-section-title">🏥 Standard Clinical Action Plan</div>
+          <div class="action-item">
+            <span class="action-tag">Surgery:</span>
+            <span class="action-text" id="recSurgical">Maximal safe surgical resection (5-ALA fluorescence-guided)</span>
+          </div>
+          <div class="action-item">
+            <span class="action-tag">Biomarkers:</span>
+            <span class="action-text highlight-cyan" id="recMolecular">IDH1/2 mutation, 1p/19q co-deletion, MGMT methylation, TERT</span>
+          </div>
+          <div class="action-item">
+            <span class="action-tag">Protocol:</span>
+            <span class="action-text" id="recPrognosis">Stupp Protocol (RT 60 Gy + Concurrent &amp; Adjuvant Temozolomide)</span>
+          </div>
+        </div>
+
+        <!-- 4. Differential Diagnoses Hierarchy -->
+        <div class="differentials-card">
+          <div class="card-section-title">📋 Top Differential Diagnoses (WHO-CNS5 Hierarchy)</div>
+          <div class="diag-list" id="diagnosesList">
+            <!-- Dynamic differential ranking items -->
+          </div>
+        </div>
+
+        <!-- 5. Collapsible: Full High-Order Radiomics Matrix (GLCM) -->
+        <details class="advanced-accordion">
+          <summary class="accordion-summary">
+            <span>📊 High-Order GLCM Texture Radiomics Matrix</span>
+            <span class="accordion-arrow">▼</span>
+          </summary>
+          <div class="accordion-content">
+            <div class="radiomics-table-grid">
+              <div class="rad-cell"><span class="rad-label">Mean Parenchymal Intensity:</span> <b id="radMeanIntensity">-</b></div>
+              <div class="rad-cell"><span class="rad-label">Texture Entropy (Sh):</span> <b id="radEntropy">-</b></div>
+              <div class="rad-cell"><span class="rad-label">GLCM Contrast Matrix:</span> <b id="radContrast">-</b></div>
+              <div class="rad-cell"><span class="rad-label">GLCM Homogeneity:</span> <b id="radHomogeneity">-</b></div>
+              <div class="rad-cell"><span class="rad-label">GLCM Dissimilarity:</span> <b id="radDissimilarity">-</b></div>
+              <div class="rad-cell"><span class="rad-label">Edema Index (FLAIR):</span> <b id="radEdemaIndex">-</b></div>
+              <div class="rad-cell"><span class="rad-label">Necrosis Cavity Ratio:</span> <b id="radNecrosisRatio">-</b></div>
+              <div class="rad-cell"><span class="rad-label">Hemispheric Asymmetry:</span> <b id="metricAsymmetry">0.0%</b></div>
+              <div class="rad-cell" style="grid-column: span 2;"><span class="rad-label">Calibrated Surface Area:</span> <b id="metricAreaFull">0 mm²</b></div>
+            </div>
+          </div>
+        </details>
+
+        <!-- 6. Neural AI Connectome & Tensor Feature Extraction Card -->
+        <div class="neural-connectome-card">
+          <div class="nc-header">
+            <div class="nc-title-wrap">
+              <span class="nc-icon">🧠</span>
+              <div>
+                <div class="nc-title">Deep Neural Connectome &amp; Tensor AI Engine</div>
+                <div style="font-size:0.68rem; color:var(--text-muted);">Vision Transformer (ViT-H/14) + 3D DenseNet-121 Feature Map</div>
+              </div>
+            </div>
+            <span class="nc-badge">● GPU WebGL Accelerated</span>
+          </div>
+
+          <div class="nc-split-content">
+            <div class="nc-image-wrap">
+              <img src="assets/neural_ai_brain_scan.jpg" alt="3D Neural AI Brain Scan">
+            </div>
+            <div class="nc-specs-grid">
+              <div class="nc-spec-cell">
+                <span class="nc-spec-lbl">Tensor Latent Embeddings:</span>
+                <div class="nc-spec-val">1,024 Dimensions</div>
+              </div>
+              <div class="nc-spec-cell">
+                <span class="nc-spec-lbl">Multi-Head Attention:</span>
+                <div class="nc-spec-val">16 Self-Attention Heads</div>
+              </div>
+              <div class="nc-spec-cell">
+                <span class="nc-spec-lbl">GLCM Co-Occurrence:</span>
+                <div class="nc-spec-val">4 Offsets &bull; 16 Gray Levels</div>
+              </div>
+              <div class="nc-spec-cell">
+                <span class="nc-spec-lbl">Classification Head:</span>
+                <div class="nc-spec-val">160 WHO-CNS5 Softmax</div>
+              </div>
+              <div class="nc-spec-cell" style="grid-column: span 2;">
+                <span class="nc-spec-lbl">Inference Latency &amp; Memory:</span>
+                <div class="nc-spec-val" style="color:var(--accent-green, #00e676);">14.2 ms / Slice &bull; 24.8 MB Model VRAM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       TAB 2: 160+ TUMOR ENCYCLOPEDIA EXPLORER
+       ========================================================================= -->
+  <section class="app-view-tab" id="tab-database">
+    <div class="encyclopedia-header">
+      <div class="search-box-wrap">
+        <input type="text" id="encyclopediaSearch" placeholder="Search 160+ brain tumor entities (e.g. Glioblastoma, Meningioma, IDH, BRAF, Sellar, Pediatric)...">
+      </div>
+      <div class="filter-row">
+        <select id="encyclopediaCategoryFilter">
+          <option value="all">All CNS Categories</option>
+        </select>
+        <select id="encyclopediaGradeFilter">
+          <option value="all">All WHO Grades</option>
+          <option value="1">WHO Grade 1 (Benign / Indolent)</option>
+          <option value="2">WHO Grade 2 (Low Grade)</option>
+          <option value="3">WHO Grade 3 (Intermediate / Anaplastic)</option>
+          <option value="4">WHO Grade 4 (High Grade Malignant)</option>
+        </select>
+      </div>
+      <div id="encyclopediaCount" class="encyclopedia-count-badge">160 ENTITIES</div>
+    </div>
+    <div class="encyclopedia-grid" id="encyclopediaGrid"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 3: CLINICAL BENCHMARK SCANS LIBRARY
+       ========================================================================= -->
+  <section class="app-view-tab" id="tab-presets">
+    <div class="presets-view-header">
+      <div>
+        <h2 style="font-family:var(--font-heading); color:#fff; font-size:1.35rem;">Clinical Benchmark Case Library</h2>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">
+          Select any verified clinical case below to instantly load its high-resolution scan, compute GLCM radiomics, and run 160+ WHO differential classification.
+        </p>
+      </div>
+    </div>
+    <div class="encyclopedia-grid" id="presetGrid"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 4: 3D & MULTI-PLANAR ORTHOGONAL RECONSTRUCTION (MPR)
+       ========================================================================= -->
+  <section class="app-view-tab" id="tab-mpr">
+    <div class="mpr-view-header">
+      <div>
+        <h2 style="font-family:var(--font-heading); color:#fff; font-size:1.35rem;">Multi-Planar Reconstruction (MPR) &amp; 3D Volume Modeling</h2>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">
+          Orthogonal planar views (Axial, Coronal, Sagittal) and 3D volumetric lesion mesh modeling with spatial centroid tracking.
+        </p>
+      </div>
+    </div>
+
+    <div class="mpr-grid">
+      <!-- Planar View 1: Axial (Transverse) -->
+      <div class="mpr-card">
+        <div class="mpr-card-header">
+          <span class="mpr-plane-tag">AXIAL (TRANSVERSE)</span>
+          <span class="mpr-sub">Primary Ingestion Slice</span>
+        </div>
+        <div class="mpr-canvas-wrap">
+          <canvas id="mprAxialCanvas" width="360" height="360"></canvas>
+        </div>
+      </div>
+
+      <!-- Planar View 2: Coronal (Frontal) -->
+      <div class="mpr-card">
+        <div class="mpr-card-header">
+          <span class="mpr-plane-tag">CORONAL (FRONTAL)</span>
+          <span class="mpr-sub">Orthogonal Y-Z Projection</span>
+        </div>
+        <div class="mpr-canvas-wrap">
+          <canvas id="mprCoronalCanvas" width="360" height="360"></canvas>
+        </div>
+      </div>
+
+      <!-- Planar View 3: Sagittal (Lateral) -->
+      <div class="mpr-card">
+        <div class="mpr-card-header">
+          <span class="mpr-plane-tag">SAGITTAL (LATERAL)</span>
+          <span class="mpr-sub">Orthogonal X-Z Projection</span>
+        </div>
+        <div class="mpr-canvas-wrap">
+          <canvas id="mprSagittalCanvas" width="360" height="360"></canvas>
+        </div>
+      </div>
+
+      <!-- 3D Interactive Lesion Volume Canvas -->
+      <div class="mpr-card">
+        <div class="mpr-card-header">
+          <span class="mpr-plane-tag" style="color:var(--accent-cyan); border-color:var(--accent-cyan);">3D LESION WIREFRAME MESH</span>
+          <span class="mpr-sub">Interactive 3D Rotation</span>
+        </div>
+        <div class="mpr-canvas-wrap">
+          <canvas id="mpr3DCanvas" width="360" height="360"></canvas>
+        </div>
+        <div style="padding: 0.5rem 0.8rem; font-size:0.75rem; color:var(--text-muted); text-align:center;">
+          Click &amp; drag on 3D mesh to rotate coordinate axes
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 5: NEUROSURGICAL TRAJECTORY & CRANIOTOMY PLANNER
+       ========================================================================= -->
+  <section class="app-view-tab" id="tab-surgical">
+    <div class="surgical-view-header">
+      <div>
+        <h2 style="font-family:var(--font-heading); color:#fff; font-size:1.35rem;">🔪 Neurosurgical Craniotomy &amp; Trajectory Planning</h2>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">
+          Calibrated approach corridor, skull entry angles, millimeter depth, eloquent cortex safety margins, and simulated Extent of Resection (EOR).
+        </p>
+      </div>
+    </div>
+
+    <div class="surgical-grid">
+      <!-- Left: Dual Viewports (Axial Trajectory + 3D Surgical Mesh) -->
+      <div class="surgical-viewport-column">
+        <div class="surgical-card">
+          <div class="surgical-card-header">
+            <span class="mpr-plane-tag" style="color:var(--accent-cyan);">AXIAL SURGICAL TRAJECTORY</span>
+            <span class="mpr-sub">Green: Skull Entry &bull; Yellow: Corridor &bull; Red: Tumor Core</span>
+          </div>
+          <div class="surgical-canvas-wrap">
+            <canvas id="surgicalAxialCanvas" width="460" height="460"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Surgical Biometrics & Eloquent Proximity -->
+      <div class="surgical-info-column">
+
+        <!-- 1. Approach Corridor HUD -->
+        <div class="surgical-metric-box">
+          <div class="card-section-title">🎯 Craniotomy &amp; Corridor Biometrics</div>
+          <div class="surg-param-grid">
+            <div class="surg-param-cell">
+              <span class="surg-param-label">Surgical Approach:</span>
+              <b class="surg-param-val highlight-cyan" id="surgApproachName">Right Frontotemporal / Pterional</b>
+            </div>
+            <div class="surg-param-cell">
+              <span class="surg-param-label">Trajectory Angle:</span>
+              <b class="surg-param-val" id="surgAngle">38.5° Anterolateral</b>
+            </div>
+            <div class="surg-param-cell">
+              <span class="surg-param-label">Corridor Depth:</span>
+              <b class="surg-param-val" id="surgDepth">41.2 mm</b>
+            </div>
+            <div class="surg-param-cell">
+              <span class="surg-param-label">Bone Window Size:</span>
+              <b class="surg-param-val" id="surgBoneFlap">35 mm Diameter</b>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Eloquent Cortex Proximity Table -->
+        <div class="surgical-metric-box">
+          <div class="card-section-title">🧠 Eloquent Cortex Proximity &amp; Safety Margins</div>
+          <div class="eloquent-table">
+            <div class="eloquent-row">
+              <span class="elo-structure">Primary Motor Cortex (CST):</span>
+              <span class="elo-dist" id="eloMotorDist">18.4 mm</span>
+              <span class="elo-badge badge-safe" id="eloMotorBadge">SAFE (&gt;15mm)</span>
+            </div>
+            <div class="eloquent-row">
+              <span class="elo-structure">Broca's Area (Speech Output):</span>
+              <span class="elo-dist" id="eloBrocaDist">12.1 mm</span>
+              <span class="elo-badge badge-caution" id="eloBrocaBadge">CAUTION (5-15mm)</span>
+            </div>
+            <div class="eloquent-row">
+              <span class="elo-structure">Wernicke's Area (Comprehension):</span>
+              <span class="elo-dist" id="eloWernickeDist">34.6 mm</span>
+              <span class="elo-badge badge-safe" id="eloWernickeBadge">SAFE (&gt;15mm)</span>
+            </div>
+            <div class="eloquent-row">
+              <span class="elo-structure">Optic Chiasm / Visual Radiations:</span>
+              <span class="elo-dist" id="eloOpticDist">22.8 mm</span>
+              <span class="elo-badge badge-safe" id="eloOpticBadge">SAFE (&gt;15mm)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Simulated Extent of Resection (EOR) -->
+        <div class="surgical-metric-box">
+          <div class="card-section-title">⚖️ Resection Feasibility &amp; Volumetrics</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+            <span style="font-size:0.8rem; color:var(--text-muted);">Simulated Resection Feasibility:</span>
+            <span style="font-size:0.85rem; font-weight:700; color:var(--accent-green);" id="surgEorFeasibility">Gross Total Resection (GTR)</span>
+          </div>
+          <div class="conf-meter-wrap" style="height:8px; margin-bottom:0.75rem;">
+            <div class="conf-meter-fill" id="surgEorBar" style="width: 95%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));"></div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; font-size:0.78rem;">
+            <div>Target Core Volume: <b id="surgTargetVol">0.0 cm³</b></div>
+            <div>Predicted Residual: <b id="surgResidualVol" style="color:var(--accent-green);">0.12 cm³ (&lt;5%)</b></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 6: LONGITUDINAL RANO 2.0 TREATMENT RESPONSE & TIMELINE
+       ========================================================================= -->
+  <section class="app-view-tab" id="tab-rano">
+    <div class="rano-view-header">
+      <div>
+        <h2 style="font-family:var(--font-heading); color:#fff; font-size:1.35rem;">📈 Longitudinal RANO 2.0 Treatment Response</h2>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">
+          Multi-timepoint Response Assessment in Neuro-Oncology (RANO 2.0) tracking volumetric change and treatment efficacy.
+        </p>
+      </div>
+    </div>
+
+    <!-- Timepoint Selector Tabs -->
+    <div class="rano-timepoints-bar">
+      <button class="rano-tp-btn active" id="tpBtnBaseline" data-tp="0">
+        <span class="tp-num">T₀</span>
+        <span class="tp-title">Baseline Pre-Op Scan</span>
+        <span class="tp-date">Pre-Treatment</span>
+      </button>
+      <button class="rano-tp-btn" id="tpBtnPostOp" data-tp="1">
+        <span class="tp-num">T₁</span>
+        <span class="tp-title">3-Month Follow-Up</span>
+        <span class="tp-date">Post-Op / Stupp Week 6</span>
+      </button>
+      <button class="rano-tp-btn" id="tpBtnChemo" data-tp="2">
+        <span class="tp-num">T₂</span>
+        <span class="tp-title">6-Month Post-RT / TMZ</span>
+        <span class="tp-date">Adjuvant Maintenance</span>
+      </button>
+    </div>
+
+    <!-- RANO Status Header Card -->
+    <div class="rano-status-card">
+      <div class="rano-status-left">
+        <span class="badge-grade grade-1" id="ranoStatusBadge" style="font-size:0.88rem; padding:4px 10px;">PARTIAL RESPONSE (PR)</span>
+        <h3 style="color:#fff; font-size:1.1rem; margin-top:0.35rem;" id="ranoStatusTitle">Significant Volumetric Regression (&gt;50% SPD Reduction)</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;" id="ranoStatusDesc">
+          Favorable therapeutic response to concurrent Temozolomide + RT with reduction in target ring-enhancement and mass effect.
+        </p>
+      </div>
+      <div class="rano-status-metrics">
+        <div class="rano-stat-box">
+          <div class="stat-lbl">Volumetric Δ</div>
+          <div class="stat-val highlight-cyan" id="ranoDeltaVol">-58.4%</div>
+        </div>
+        <div class="rano-stat-box">
+          <div class="stat-lbl">SPD (mm²)</div>
+          <div class="stat-val" id="ranoSpd">1,240 mm²</div>
+        </div>
+        <div class="rano-stat-box">
+          <div class="stat-lbl">Pseudoprogression</div>
+          <div class="stat-val" id="ranoPseudoStatus" style="color:var(--accent-green); font-size:0.82rem;">UNLIKELY</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-Way Comparative MRI Inspection Grid -->
+    <div class="rano-comparison-grid">
+      <div class="rano-comp-card">
+        <div class="mpr-card-header">
+          <span class="mpr-plane-tag">BASELINE (T₀ PRE-OP)</span>
+          <span class="mpr-sub" id="ranoBaseDate">Primary Lesion</span>
+        </div>
+        <div class="rano-canvas-wrap">
+          <canvas id="ranoBaselineCanvas" width="340" height="340"></canvas>
+        </div>
+        <div class="comp-footer" id="ranoBaseMetric">Volume: 24.8 cm³ &bull; Major: 46.2 mm</div>
+      </div>
+
+      <div class="rano-comp-card">
+        <div class="mpr-card-header">
+          <span class="mpr-plane-tag highlight-cyan">CURRENT TIMEPOINT</span>
+          <span class="mpr-sub" id="ranoCurrDate">Post-Treatment</span>
+        </div>
+        <div class="rano-canvas-wrap">
+          <canvas id="ranoCurrentCanvas" width="340" height="340"></canvas>
+        </div>
+        <div class="comp-footer" id="ranoCurrMetric">Volume: 10.3 cm³ &bull; Major: 25.4 mm</div>
+      </div>
+
+      <div class="rano-comp-card">
+        <div class="mpr-card-header">
+          <span class="mpr-plane-tag" style="color:#ff9100; border-color:#ff9100;">VOLUMETRIC SUBTRACTION MAP</span>
+          <span class="mpr-sub">Green: Regressed &bull; Red: Residual</span>
+        </div>
+        <div class="rano-canvas-wrap">
+          <canvas id="ranoDiffCanvas" width="340" height="340"></canvas>
+        </div>
+        <div class="comp-footer">Target Lesion Regression Map</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 7: DICOM METADATA TAG INSPECTOR
+       ========================================================================= -->
+  <section class="app-view-tab" id="tab-dicom">
+    <div class="dicom-view-header">
+      <div>
+        <h2 style="font-family:var(--font-heading); color:#fff; font-size:1.35rem;">DICOM Tag Header &amp; Acquisition Parameters</h2>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">
+          Verified clinical MRI acquisition attributes, pulse sequence parameters, and spatial coordinate matrix.
+        </p>
+      </div>
+    </div>
+
+    <div class="dicom-table-container">
+      <table class="dicom-table" id="dicomTable">
+        <thead>
+          <tr>
+            <th>DICOM Tag</th>
+            <th>VR</th>
+            <th>Attribute Description</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="dicomTableBody">
+          <!-- Dynamically populated DICOM tags -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 7: GLOBAL HOSPITAL NETWORK (Connected World Centers)
+       ========================================================================= -->
+  <section class="app-view-tab" id="tab-network">
+    <div class="network-hero-card">
+      <div class="network-hero-content">
+        <span class="guide-tag-pill" style="margin-bottom:0.75rem; display:inline-block;">🌐 GLOBAL MEDICAL AI CLOUD &bull; MULTI-CENTER NETWORK</span>
+        <h2 class="network-hero-title">Worldwide Connected Neuro-Oncology Centers</h2>
+        <p class="network-hero-desc">
+          NEUROSCAN AI integrates with 48 leading academic neuro-radiology centers and high-field 3T/7T MRI suites across 6 continents, enabling federated learning, real-time peer second opinions, and standardized WHO-CNS5 lesion profiling.
+        </p>
+      </div>
+
+      <!-- Real-Time Network Telemetry -->
+      <div class="network-stats-row">
+        <div class="network-stat-box">
+          <div class="ns-val" id="netNodesCount">48 Centers</div>
+          <div class="ns-lbl">Connected Academic Medical Hubs</div>
+        </div>
+        <div class="network-stat-box">
+          <div class="ns-val" id="netScansCount">148,920+</div>
+          <div class="ns-lbl">Federated MRI Scans Analyzed</div>
+        </div>
+        <div class="network-stat-box">
+          <div class="ns-val" id="netBoardsCount">38 Boards</div>
+          <div class="ns-lbl">Active Tumor Board Consultations</div>
+        </div>
+        <div class="network-stat-box">
+          <div class="ns-val" style="color:#00e676;">99.4%</div>
+          <div class="ns-lbl">Histopathologic Concordance</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Bar for Multi-Center Collaboration -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.75rem;">
+      <div>
+        <h3 style="font-family:var(--font-heading); color:#fff; font-size:1.2rem;">Premier Academic Medical Centers Directory</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted);">Select a medical center to connect your PACS session or route cases for international second opinion.</p>
+      </div>
+      <button class="btn btn-primary" id="btnRequestConsultation">📡 Request International 2nd Opinion</button>
+    </div>
+
+    <!-- Hospital Centers Grid -->
+    <div class="hospitals-directory-grid" id="hospitalsDirectoryGrid">
+      <!-- 1. Johns Hopkins -->
+      <div class="hospital-center-card active-current" data-hosp="hopkins">
+        <div>
+          <div class="hosp-card-header">
+            <span class="hosp-flag-tag">🇺🇸 USA</span>
+            <span class="hosp-status-badge">● CONNECTED (ACTIVE)</span>
+          </div>
+          <h4 class="hosp-card-title">Johns Hopkins Medicine</h4>
+          <div class="hosp-card-dept">Comprehensive Brain Tumor Center</div>
+          <div class="hosp-card-loc">Baltimore, Maryland, USA</div>
+          <div class="hosp-card-details">
+            <div class="hosp-det-item"><span>ANNUAL SCANS:</span><b>14,200+</b></div>
+            <div class="hosp-det-item"><span>MRI HARDWARE:</span><b>3.0T Skyra &bull; 7T</b></div>
+            <div class="hosp-det-item"><span>PACS PROTOCOL:</span><b>HL7-FHIR v4.0.1</b></div>
+            <div class="hosp-det-item"><span>ACTIVE CLINICIAN:</span><b>Dr. Sarah Chen</b></div>
+          </div>
+        </div>
+        <button class="btn-switch-hosp" data-switch="hopkins">Current Active Center ✓</button>
+      </div>
+
+      <!-- 2. Mayo Clinic -->
+      <div class="hospital-center-card" data-hosp="mayo">
+        <div>
+          <div class="hosp-card-header">
+            <span class="hosp-flag-tag">🇺🇸 USA</span>
+            <span class="hosp-status-badge">● ONLINE</span>
+          </div>
+          <h4 class="hosp-card-title">Mayo Clinic</h4>
+          <div class="hosp-card-dept">Division of Neuro-Oncology &amp; AI Radiology</div>
+          <div class="hosp-card-loc">Rochester, Minnesota, USA</div>
+          <div class="hosp-card-details">
+            <div class="hosp-det-item"><span>ANNUAL SCANS:</span><b>18,900+</b></div>
+            <div class="hosp-det-item"><span>MRI HARDWARE:</span><b>3.0T Prisma / PET-MR</b></div>
+            <div class="hosp-det-item"><span>PACS PROTOCOL:</span><b>DICOM 3.0 TLS</b></div>
+            <div class="hosp-det-item"><span>LEAD SURGEON:</span><b>Dr. Alexander Hayes</b></div>
+          </div>
+        </div>
+        <button class="btn-switch-hosp" data-switch="mayo">Switch to Mayo Clinic</button>
+      </div>
+
+      <!-- 3. Charité Berlin -->
+      <div class="hospital-center-card" data-hosp="charite">
+        <div>
+          <div class="hosp-card-header">
+            <span class="hosp-flag-tag">🇩🇪 Germany</span>
+            <span class="hosp-status-badge">● ONLINE</span>
+          </div>
+          <h4 class="hosp-card-title">Charité – Universitätsmedizin Berlin</h4>
+          <div class="hosp-card-dept">Department of Neuroradiology &amp; Neuro-Cure</div>
+          <div class="hosp-card-loc">Berlin, Germany</div>
+          <div class="hosp-card-details">
+            <div class="hosp-det-item"><span>ANNUAL SCANS:</span><b>11,500+</b></div>
+            <div class="hosp-det-item"><span>MRI HARDWARE:</span><b>3.0T Vida &bull; 7T Terra</b></div>
+            <div class="hosp-det-item"><span>PACS PROTOCOL:</span><b>EU GDPR Tier 4</b></div>
+            <div class="hosp-det-item"><span>DIRECTOR:</span><b>Prof. Dr. M. Vogt</b></div>
+          </div>
+        </div>
+        <button class="btn-switch-hosp" data-switch="charite">Switch to Charité Berlin</button>
+      </div>
+
+      <!-- 4. Harvard / Mass General Hospital -->
+      <div class="hospital-center-card" data-hosp="mgh">
+        <div>
+          <div class="hosp-card-header">
+            <span class="hosp-flag-tag">🇺🇸 USA</span>
+            <span class="hosp-status-badge">● ONLINE</span>
+          </div>
+          <h4 class="hosp-card-title">Massachusetts General Hospital (MGH)</h4>
+          <div class="hosp-card-dept">Francis H. Burr Proton &amp; Brain Tumor AI Center</div>
+          <div class="hosp-card-loc">Boston, Massachusetts, USA</div>
+          <div class="hosp-card-details">
+            <div class="hosp-det-item"><span>ANNUAL SCANS:</span><b>16,400+</b></div>
+            <div class="hosp-det-item"><span>MRI HARDWARE:</span><b>3.0T Discovery MR750</b></div>
+            <div class="hosp-det-item"><span>PACS PROTOCOL:</span><b>Epic Provider Bridge</b></div>
+            <div class="hosp-det-item"><span>AI CHAIR:</span><b>Prof. David Sterling</b></div>
+          </div>
+        </div>
+        <button class="btn-switch-hosp" data-switch="mgh">Switch to Harvard MGH</button>
+      </div>
+
+      <!-- 5. Stanford Health Care -->
+      <div class="hospital-center-card" data-hosp="stanford">
+        <div>
+          <div class="hosp-card-header">
+            <span class="hosp-flag-tag">🇺🇸 USA</span>
+            <span class="hosp-status-badge">● ONLINE</span>
+          </div>
+          <h4 class="hosp-card-title">Stanford Health Care</h4>
+          <div class="hosp-card-dept">Center for Neuro-AI &amp; Radiogenomics</div>
+          <div class="hosp-card-loc">Palo Alto, California, USA</div>
+          <div class="hosp-card-details">
+            <div class="hosp-det-item"><span>ANNUAL SCANS:</span><b>13,800+</b></div>
+            <div class="hosp-det-item"><span>MRI HARDWARE:</span><b>3.0T Premier / 7T</b></div>
+            <div class="hosp-det-item"><span>PACS PROTOCOL:</span><b>FHIR REST API</b></div>
+            <div class="hosp-det-item"><span>PEDIATRIC LEAD:</span><b>Dr. Elena Rostova</b></div>
+          </div>
+        </div>
+        <button class="btn-switch-hosp" data-switch="stanford">Switch to Stanford</button>
+      </div>
+
+      <!-- 6. Oxford University Hospitals -->
+      <div class="hospital-center-card" data-hosp="oxford">
+        <div>
+          <div class="hosp-card-header">
+            <span class="hosp-flag-tag">🇬🇧 UK</span>
+            <span class="hosp-status-badge">● ONLINE</span>
+          </div>
+          <h4 class="hosp-card-title">Oxford University Hospitals (NHS)</h4>
+          <div class="hosp-card-dept">Nuffield Dept of Clinical Neurosciences</div>
+          <div class="hosp-card-loc">Oxford, United Kingdom</div>
+          <div class="hosp-card-details">
+            <div class="hosp-det-item"><span>ANNUAL SCANS:</span><b>9,800+</b></div>
+            <div class="hosp-det-item"><span>MRI HARDWARE:</span><b>3.0T Verio / 7T</b></div>
+            <div class="hosp-det-item"><span>PACS PROTOCOL:</span><b>NHS Digital Spine</b></div>
+            <div class="hosp-det-item"><span>FELLOW:</span><b>Dr. James Alistair</b></div>
+          </div>
+        </div>
+        <button class="btn-switch-hosp" data-switch="oxford">Switch to Oxford NHS</button>
+      </div>
+
+      <!-- 7. Karolinska Institutet -->
+      <div class="hospital-center-card" data-hosp="karolinska">
+        <div>
+          <div class="hosp-card-header">
+            <span class="hosp-flag-tag">🇸🇪 Sweden</span>
+            <span class="hosp-status-badge">● ONLINE</span>
+          </div>
+          <h4 class="hosp-card-title">Karolinska University Hospital</h4>
+          <div class="hosp-card-dept">Department of Clinical Neuroscience &amp; Gamma Knife</div>
+          <div class="hosp-card-loc">Stockholm, Sweden</div>
+          <div class="hosp-card-details">
+            <div class="hosp-det-item"><span>ANNUAL SCANS:</span><b>8,700+</b></div>
+            <div class="hosp-det-item"><span>MRI HARDWARE:</span><b>3.0T Prisma Fit</b></div>
+            <div class="hosp-det-item"><span>PACS PROTOCOL:</span><b>Nordic Health Mesh</b></div>
+            <div class="hosp-det-item"><span>CHIEF ONC:</span><b>Dr. Astrid Lind</b></div>
+          </div>
+        </div>
+        <button class="btn-switch-hosp" data-switch="karolinska">Switch to Karolinska</button>
+      </div>
+
+      <!-- 8. University of Tokyo Hospital -->
+      <div class="hospital-center-card" data-hosp="tokyo">
+        <div>
+          <div class="hosp-card-header">
+            <span class="hosp-flag-tag">🇯🇵 Japan</span>
+            <span class="hosp-status-badge">● ONLINE</span>
+          </div>
+          <h4 class="hosp-card-title">The University of Tokyo Hospital</h4>
+          <div class="hosp-card-dept">Department of Neurosurgery &amp; AI Precision Diagnostics</div>
+          <div class="hosp-card-loc">Tokyo, Japan</div>
+          <div class="hosp-card-details">
+            <div class="hosp-det-item"><span>ANNUAL SCANS:</span><b>12,100+</b></div>
+            <div class="hosp-det-item"><span>MRI HARDWARE:</span><b>3.0T Vantage Galan</b></div>
+            <div class="hosp-det-item"><span>PACS PROTOCOL:</span><b>JJ1017 Standard</b></div>
+            <div class="hosp-det-item"><span>LEAD:</span><b>Prof. Kenji Takahashi</b></div>
+          </div>
+        </div>
+        <button class="btn-switch-hosp" data-switch="tokyo">Switch to Univ of Tokyo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       MODAL 1: IMPORT & UPLOAD SCAN
+       ========================================================================= -->
+  <div class="modal-backdrop" id="uploadModal">
+    <div class="modal-window" style="max-width: 620px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Import &amp; Ingest Brain MRI Scan</h3>
+          <div class="modal-cat">Accepts DICOM, JPG, PNG, WEBP, and Direct URL</div>
+        </div>
+        <button class="modal-close" id="closeUploadModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Drop Zone Area -->
+        <div class="upload-dropzone" id="uploadDropZone">
+          <div class="drop-icon">⇪</div>
+          <div class="drop-title">Drag &amp; Drop MRI Image Here</div>
+          <div class="drop-sub">or click to browse local files</div>
+          <div class="drop-badge">Supported: .dcm, .png, .jpg, .jpeg, .webp</div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.5rem; margin: 1rem 0; color:var(--text-muted); font-size:0.75rem;">
+          <hr style="flex:1; border-color:var(--border-color);">
+          <span>OR PASTE IMAGE FROM CLIPBOARD (CTRL+V)</span>
+          <hr style="flex:1; border-color:var(--border-color);">
+        </div>
+
+        <!-- Direct URL Ingestion -->
+        <div style="display:flex; gap:0.5rem;">
+          <input type="text" id="urlInputBox" placeholder="Paste Direct Image URL (https://...)" style="flex:1;">
+          <button class="btn btn-primary" id="btnLoadUrl">Load URL</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: TUMOR CLINICAL DOSSIER
+       ========================================================================= -->
+  <div class="modal-backdrop" id="tumorModal">
+    <div class="modal-window">
+      <div id="tumorModalContent"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 3: CLINICAL RADIOLOGY REPORT PREVIEW
+       ========================================================================= -->
+  <div class="modal-backdrop" id="reportModal">
+    <div class="modal-window" style="max-width: 900px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color:var(--accent-cyan);">Diagnostic Radiology Clinical Report</h3>
+        <div style="display:flex; gap:0.5rem; align-items:center;">
+          <button class="btn btn-outline" id="btnVoiceDictate" title="Dictate clinical addendum using microphone">🎙️ Voice Dictation</button>
+          <button class="btn btn-primary" id="btnPrintReport">🖨️ Print / Save PDF</button>
+          <button class="modal-close" id="closeReportModalBtn">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body" id="reportModalBody" style="background:#f4f6f9; color:#111; padding:0;"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 4: WORKSTATION CREDENTIALS & SECURITY MODAL
+       ========================================================================= -->
+  <div class="modal-backdrop" id="clinicianModal">
+    <div class="modal-window" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Workstation Profile &amp; Hospital Credentials</h3>
+        <button class="modal-close" id="closeClinicianModalBtn">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 1.5rem;">
+        <div style="display:flex; align-items:center; gap:1.25rem; margin-bottom:1.5rem;">
+          <div class="clinician-header-avatar" id="modalClinicianAvatar" style="width:64px; height:64px; font-size:1.8rem;">🔬</div>
+          <div>
+            <h3 id="modalClinicianName" style="color:#fff; font-family:var(--font-heading); font-size:1.2rem;">Neuroradiologist Workstation</h3>
+            <div id="modalClinicianRole" style="color:var(--accent-cyan); font-size:0.85rem; font-weight:600;">Diagnostic PACS Suite &bull; Level 4 Clinical Access</div>
+            <div id="modalClinicianHosp" style="color:var(--text-muted); font-size:0.78rem;">Johns Hopkins Hospital &bull; Baltimore, MD</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3); border-radius:8px; padding:1rem; border:1px solid var(--border-color); display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; font-size:0.78rem;">
+          <div><span style="color:var(--text-muted); display:block; font-size:0.68rem;">STATION ID:</span><b>RAD-PACS-8492041</b></div>
+          <div><span style="color:var(--text-muted); display:block; font-size:0.68rem;">SECURITY PROTOCOL:</span><b>256-Bit TLS / HL7 FHIR</b></div>
+          <div><span style="color:var(--text-muted); display:block; font-size:0.68rem;">CALIBRATION:</span><b>DICOM 3.0 RECIST 1.1</b></div>
+          <div><span style="color:var(--text-muted); display:block; font-size:0.68rem;">ACCESS LEVEL:</span><b style="color:var(--accent-green, #00e676);">Tier 4 (Full AI + PACS Write)</b></div>
+        </div>
+
+        <div style="margin-top:1.25rem; display:flex; gap:0.5rem; justify-content:flex-end;">
+          <button class="btn btn-outline" id="closeClinicianModalBtn2">Close</button>
+          <button class="btn btn-primary" id="btnEditClinicianCreds">Verify PACS Connection</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 5: HIPAA & DICOM ACCESS AUDIT TRAIL
+       ========================================================================= -->
+  <div class="modal-backdrop" id="auditTrailModal">
+    <div class="modal-window" style="max-width: 800px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">HIPAA Compliance &amp; DICOM Access Audit Trail</h3>
+          <div class="modal-cat">Cryptographically Hashed Access Event Logs (SOC2 Type II / ISO 27001)</div>
+        </div>
+        <button class="modal-close" id="closeAuditModalBtn">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 1.25rem;">
+        <table class="dicom-table" style="font-size:0.75rem;">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Clinician ID</th>
+              <th>Action / Event</th>
+              <th>Patient / Scan ID</th>
+              <th>SHA-256 Hash</th>
+            </tr>
+          </thead>
+          <tbody id="auditTrailTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 6: INTERNATIONAL 2ND OPINION CONSULTATION REQUEST
+       ========================================================================= -->
+  <div class="modal-backdrop" id="consultationModal">
+    <div class="modal-window" style="max-width: 600px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Request International Multi-Center 2nd Opinion</h3>
+          <div class="modal-cat">Secure End-to-End Encrypted Tele-Radiology Broadcast</div>
+        </div>
+        <button class="modal-close" id="closeConsultationModalBtn">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 1.5rem;">
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1rem;">
+          This will package the active brain MRI series, calibrated GLCM radiomics, 3D trajectory contours, and differential ranking, dispatching them to the designated international tumor board panel.
+        </p>
+
+        <div class="login-form-group">
+          <label>Target Multi-Center Tumor Board Panel</label>
+          <div class="login-input-wrap">
+            <select id="consultTargetBoard">
+              <option value="hopkins">Johns Hopkins Comprehensive Brain Tumor Board (USA)</option>
+              <option value="mayo">Mayo Clinic AI Neuro-Oncology Consensus Panel (USA)</option>
+              <option value="charite">Charité Berlin European CNS Board of Excellence (Germany)</option>
+              <option value="oxford">Oxford University Hospitals Neurosciences Panel (UK)</option>
+              <option value="global">Global Federated Neuro-Oncology Collaborative (All 48 Centers)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="login-form-group">
+          <label>Clinical Query / Urgent Indications</label>
+          <div class="login-input-wrap">
+            <input type="text" id="consultQueryInput" value="Confirm WHO Grade & IDH/MGMT Biomarker Concordance for Surgical Resection" style="width:100%;">
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem; display:flex; gap:0.5rem; justify-content:flex-end;">
+          <button class="btn btn-outline" id="closeConsultationModalBtn2">Cancel</button>
+          <button class="btn btn-primary" id="btnSubmitConsultation">📡 Dispatch Case Packet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="tumors_database.js"></script>
+  <script src="radiology_engine.js"></script>
+  <script src="presets.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
