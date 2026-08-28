@@ -5,13 +5,13 @@
 [![Compliance](https://img.shields.io/badge/Regulatory-FDA_510(k)_Cleared_%E2%80%A2_HIPAA_%E2%80%A2_DICOM_3.0-ff9100.svg)](#)
 [![Security](https://img.shields.io/badge/Security-256--Bit_TLS_%E2%80%A2_FIDO2_PKI_SmartCard-0088ff.svg)](#)
 
-A world-class, clinical-grade neuro-oncology workstation and web radiology platform deployed across leading academic medical centers (**Johns Hopkins Medicine**, **Mayo Clinic**, **Charité – Universitätsmedizin Berlin**, **Harvard Mass General Hospital**, **Stanford Health Care**, **Oxford University Hospitals NHS**, **Karolinska University Hospital**, and **The University of Tokyo Hospital**).
+A world-class, clinical-grade neuro-oncology workstation and web radiology platform deployed across leading academic medical centers (**Johns Hopkins Medicine**, **Mayo Clinic**, **Charite - Universitatsmedizin Berlin**, **Harvard Mass General Hospital**, **Stanford Health Care**, **Oxford University Hospitals NHS**, **Karolinska University Hospital**, and **The University of Tokyo Hospital**).
 
-The platform scans brain MRI acquisitions, isolates brain parenchyma via Intracranial Brain Extraction (BET), segments tumor margins via sub-pixel active contouring, extracts high-order Gray-Level Co-occurrence Matrix (GLCM) radiomics, computes 3D volumetric metrics ($cm^3$) and RECIST 1.1 dimensions ($mm$), synthesizes Grad-CAM attention heatmaps, and delivers real-time differential classification across **160 distinct WHO-CNS 5th Edition categorized brain tumor entities and mass lesions**.
+The platform scans brain MRI acquisitions, isolates brain parenchyma via Intracranial Brain Extraction (BET), segments tumor margins via sub-pixel active contouring, extracts high-order Gray-Level Co-occurrence Matrix (GLCM) radiomics, computes 3D volumetric metrics (cm3) and RECIST 1.1 dimensions (mm), synthesizes Grad-CAM attention heatmaps, and delivers real-time differential classification across **160 distinct WHO-CNS 5th Edition categorized brain tumor entities and mass lesions**.
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 1. [System Architecture & Pipeline Diagrams](#-system-architecture--pipeline-diagrams)
    - [1. End-to-End Diagnostic Pipeline Flowchart](#1-end-to-end-diagnostic-pipeline-flowchart)
    - [2. Multi-Hospital PACS & Security Topology](#2-multi-hospital-pacs--security-topology)
@@ -49,7 +49,7 @@ flowchart TD
     end
 
     subgraph VisionEngine ["3. Vision and Radiomics Engine"]
-        SEQ_NORM --> BET["Brain Extraction Tool (BET Skull Stripping)"]
+        SEQ_NORM --> BET["Brain Extraction Tool - BET Skull Stripping"]
         BET --> ASYM["Hemispheric Asymmetry and Midline Analysis"]
         ASYM --> SEG["Sub-Pixel Active Contour Segmentation"]
         SEG --> BOUNDS["Tumor Boundary Vector and RECIST 1.1 Calipers"]
@@ -118,10 +118,10 @@ flowchart LR
 ```mermaid
 flowchart LR
     RAW["Raw Brain MRI Image"] --> PRE["Pre-Processing and Window/Level (240/125)"]
-    PRE --> BET["Brain Extraction Tool (BET Skull Stripping)"]
+    PRE --> BET["Brain Extraction Tool - BET Skull Stripping"]
     BET --> SEED["Adaptive Intensity Clustering"]
     SEED --> SNAKE["Active Contour Optimization"]
-    SNAKE --> METRICS["Biometrics: Major/Minor Diameters and Volume"]
+    SNAKE --> METRICS["Biometrics: Major and Minor Diameters and Volume"]
     SNAKE --> GLCM["GLCM Co-Occurrence Matrix: Contrast, Entropy, Energy"]
     METRICS --> FEAT_VEC["High-Dimensional Radiomic Vector"]
     GLCM --> FEAT_VEC
@@ -138,10 +138,10 @@ flowchart TD
     ANAT --> ENTRY["Optimal Skull Entry Calculation"]
     ENTRY --> TRAJ["Corridor Trajectory: Angle, Depth and Bone Flap"]
     TRAJ --> ELOQUENT{"Eloquent Cortex Proximity Check"}
-    ELOQUENT -->|"Motor Cortex CST"| DIST_M["Motor Buffer: Safe (>= 15mm) or Caution (< 15mm)"]
-    ELOQUENT -->|"Broca Speech Area"| DIST_B["Broca Buffer: Safe (>= 15mm) or Caution (< 15mm)"]
-    ELOQUENT -->|"Wernicke Area"| DIST_W["Wernicke Buffer: Safe (>= 15mm) or Caution (< 15mm)"]
-    ELOQUENT -->|"Optic Radiation"| DIST_O["Optic Buffer: Safe (>= 15mm) or Caution (< 15mm)"]
+    ELOQUENT -->|"Motor Cortex CST"| DIST_M["Motor Buffer: Safe (15mm plus) or Caution (under 15mm)"]
+    ELOQUENT -->|"Broca Speech Area"| DIST_B["Broca Buffer: Safe (15mm plus) or Caution (under 15mm)"]
+    ELOQUENT -->|"Wernicke Area"| DIST_W["Wernicke Buffer: Safe (15mm plus) or Caution (under 15mm)"]
+    ELOQUENT -->|"Optic Radiation"| DIST_O["Optic Buffer: Safe (15mm plus) or Caution (under 15mm)"]
     DIST_M --> RESECTION["Resection Feasibility: Gross Total Resection vs Subtotal Resection"]
     DIST_B --> RESECTION
     DIST_W --> RESECTION
@@ -154,8 +154,8 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    T0["T0: Baseline Pre-Op Scan<br/>Primary Diagnostic Benchmark<br/>Target SPD: 2,980 mm²"] --> T1["T1: 3-Month Follow-Up<br/>Post-Surgical + Stupp Protocol<br/>Partial Response (PR): >50% SPD Reduction"]
-    T1 --> T2["T2: 6-Month Adjuvant Phase<br/>Maintenance Temozolomide<br/>Delta Volume: -58.4% (Pseudoprogression Unlikely)"]
+    T0["T0: Baseline Pre-Op Scan (Target SPD: 2980 mm2)"] --> T1["T1: 3-Month Follow-Up (Partial Response over 50% SPD Reduction)"]
+    T1 --> T2["T2: 6-Month Adjuvant Phase (Delta Volume -58.4% Stable)"]
 ```
 
 ---
@@ -177,7 +177,7 @@ flowchart LR
 
 ### Step 4: Active Contour Segmentation & RECIST 1.1 Biometrics
 * **Sub-Pixel Active Contouring**: Isolates hyperintense contrast-enhancing cores, non-enhancing infiltration, and surrounding vasogenic edema.
-* **RECIST 1.1 & RANO Calipers**: Calculates major axial diameter ($mm$), perpendicular minor diameter ($mm$), cross-sectional surface area ($mm^2$), and 3D ellipsoid volume ($cm^3$).
+* **RECIST 1.1 & RANO Calipers**: Calculates major axial diameter (mm), perpendicular minor diameter (mm), cross-sectional surface area (mm2), and 3D ellipsoid volume (cm3).
 * **Interactive Tool Palette**:
   - **Pinpoint (S)**: Click lesion to seed active contouring.
   - **Pan (P)** & **Zoom (+/-)**: High-precision sub-pixel canvas movement.
@@ -185,7 +185,7 @@ flowchart LR
   - **Brush (B)** & **Eraser (X)**: Manual contour sculpting.
 
 ### Step 5: High-Order GLCM Texture Radiomics & Grad-CAM
-* **GLCM Radiomics Matrix**: Extracts statistical texture distributions including Mean Parenchymal Intensity, Texture Entropy ($Sh$), GLCM Contrast, Homogeneity, Dissimilarity, and Edema Index.
+* **GLCM Radiomics Matrix**: Extracts statistical texture distributions including Mean Parenchymal Intensity, Texture Entropy (Sh), GLCM Contrast, Homogeneity, Dissimilarity, and Edema Index.
 * **Grad-CAM Attention Heatmap**: Multi-level visual attention map displaying the neural model's focal inference zones with real-time opacity controls.
 
 ### Step 6: 160+ WHO-CNS5 Differential Diagnostic Classification
@@ -199,13 +199,13 @@ flowchart LR
 
 ### Step 8: Neurosurgical Craniotomy & Trajectory Planning
 * Recommends optimal surgical entry site (*Pterional, Frontolateral, Temporal, Retrosigmoid, etc.*).
-* Computes approach angle ($\theta^\circ$), corridor depth ($mm$), and bone window size ($mm$).
+* Computes approach angle (θ°), corridor depth (mm), and bone window size (mm).
 * Calculates millimeter safety distance to eloquent structures (**Corticospinal Motor Cortex**, **Broca's Speech**, **Wernicke's Comprehension**, **Optic Radiation**).
 * Simulates Extent of Resection (Gross Total Resection vs. Subtotal Resection) and predicted residual volume.
 
 ### Step 9: Longitudinal RANO 2.0 Treatment Tracking
-* Tracks multi-timepoint treatment response across $T_0$ (Baseline Pre-Op), $T_1$ (3-Month Follow-Up), and $T_2$ (6-Month Post-RT/TMZ).
-* Computes volumetric delta percentage ($\Delta \text{Volume} \%$) and RANO status (Complete Response, Partial Response, Stable Disease, Progressive Disease, Pseudoprogression).
+* Tracks multi-timepoint treatment response across T0 (Baseline Pre-Op), T1 (3-Month Follow-Up), and T2 (6-Month Post-RT/TMZ).
+* Computes volumetric delta percentage (ΔVolume %) and RANO status (Complete Response, Partial Response, Stable Disease, Progressive Disease, Pseudoprogression).
 * Generates a 3-way visual comparison grid with volumetric subtraction maps.
 
 ### Step 10: Clinical Radiology Report & Voice Synthesis
@@ -238,23 +238,23 @@ The platform includes comprehensive clinical dossiers covering **160 distinct WH
 
 ## 📐 Mathematical & Radiomic Formulations
 
-### 1. 3D Ellipsoid Volumetric Estimation ($cm^3$)
-$$V = \frac{4}{3} \pi \cdot \left(\frac{D_{\text{major}}}{2}\right) \cdot \left(\frac{D_{\text{minor}}}{2}\right) \cdot \left(\frac{D_{\text{slice}}}{2}\right) \cdot \frac{1}{1000}$$
+### 1. 3D Ellipsoid Volumetric Estimation (cm3)
+```text
+Volume = (4 / 3) * π * (D_major / 2) * (D_minor / 2) * (D_slice / 2) * (1 / 1000)
+```
 
 ### 2. High-Order Gray-Level Co-occurrence Matrix (GLCM)
-For normalized co-occurrence matrix $P(i, j)$ with $N_g$ gray levels:
-
-$$\text{Contrast} = \sum_{i=0}^{N_g-1} \sum_{j=0}^{N_g-1} |i - j|^2 P(i, j)$$
-
-$$\text{Homogeneity (IDM)} = \sum_{i=0}^{N_g-1} \sum_{j=0}^{N_g-1} \frac{P(i, j)}{1 + |i - j|^2}$$
-
-$$\text{Entropy} = -\sum_{i=0}^{N_g-1} \sum_{j=0}^{N_g-1} P(i, j) \log_2(P(i, j) + \epsilon)$$
-
-$$\text{Dissimilarity} = \sum_{i=0}^{N_g-1} \sum_{j=0}^{N_g-1} |i - j| P(i, j)$$
+For normalized co-occurrence matrix P(i, j) with Ng gray levels:
+* **Contrast**: `Σ Σ |i - j|² * P(i, j)`
+* **Homogeneity (IDM)**: `Σ Σ P(i, j) / (1 + |i - j|²)`
+* **Entropy**: `-Σ Σ P(i, j) * log2(P(i, j) + ε)`
+* **Dissimilarity**: `Σ Σ |i - j| * P(i, j)`
 
 ### 3. RANO 2.0 Sum of Products of Diameters (SPD)
-$$\text{SPD} = \sum_{k=1}^{n} \left( D_{\text{major}, k} \times D_{\text{minor}, k} \right)$$
-$$\Delta \text{Volume} \% = \left(\frac{V_{\text{current}} - V_{\text{baseline}}}{V_{\text{baseline}}}\right) \times 100\%$$
+```text
+SPD = Σ (D_major * D_minor)
+ΔVolume % = ((Volume_current - Volume_baseline) / Volume_baseline) * 100%
+```
 
 ---
 
