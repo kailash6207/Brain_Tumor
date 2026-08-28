@@ -12,95 +12,95 @@ The platform scans brain MRI acquisitions, isolates brain parenchyma via Intracr
 ---
 
 ## Table of Contents
-1. [System Architecture & Pipeline Diagrams](#-system-architecture--pipeline-diagrams)
+1. [System Architecture and Pipeline Diagrams](#system-architecture-and-pipeline-diagrams)
    - [1. End-to-End Diagnostic Pipeline Flowchart](#1-end-to-end-diagnostic-pipeline-flowchart)
-   - [2. Multi-Hospital PACS & Security Topology](#2-multi-hospital-pacs--security-topology)
-   - [3. Radiomics & Computer Vision Engine Flow](#3-radiomics--computer-vision-engine-flow)
-   - [4. Neurosurgical Planning & Resection Corridor](#4-neurosurgical-planning--resection-corridor)
+   - [2. Multi-Hospital PACS and Security Topology](#2-multi-hospital-pacs-and-security-topology)
+   - [3. Radiomics and Computer Vision Engine Flow](#3-radiomics-and-computer-vision-engine-flow)
+   - [4. Neurosurgical Planning and Resection Corridor](#4-neurosurgical-planning-and-resection-corridor)
    - [5. Longitudinal RANO 2.0 Treatment Tracking](#5-longitudinal-rano-20-treatment-tracking)
-2. [End-to-End Clinical Workflow Walkthrough](#-end-to-end-clinical-workflow-walkthrough)
-3. [160+ WHO-CNS5 Brain Tumor Encyclopedia](#-160-who-cns5-brain-tumor-encyclopedia)
-4. [Mathematical & Radiomic Formulations](#-mathematical--radiomic-formulations)
-5. [Workstation Features & Diagnostic Modes](#-workstation-features--diagnostic-modes)
-6. [File Architecture](#-file-architecture)
-7. [Quick Start Guide](#-quick-start-guide)
+2. [End-to-End Clinical Workflow Walkthrough](#end-to-end-clinical-workflow-walkthrough)
+3. [160+ WHO-CNS5 Brain Tumor Encyclopedia](#160-who-cns5-brain-tumor-encyclopedia)
+4. [Mathematical and Radiomic Formulations](#mathematical-and-radiomic-formulations)
+5. [Workstation Features and Diagnostic Modes](#workstation-features-and-diagnostic-modes)
+6. [File Architecture](#file-architecture)
+7. [Quick Start Guide](#quick-start-guide)
 
 ---
 
-## 📊 System Architecture & Pipeline Diagrams
+## System Architecture and Pipeline Diagrams
 
 ### 1. End-to-End Diagnostic Pipeline Flowchart
 
 ```mermaid
 flowchart TD
-    subgraph Portal ["1. Hospital Access Portal"]
-        P1["Page 1: Clinical AI and Connectome Showcase"] --> P2["Page 2: Workstation Authentication"]
-        P2 --> AUTH["PACS Authorization and TLS Session"]
+    subgraph Portal [Hospital Access Portal]
+        P1[Page 1: Clinical AI Showcase] --> P2[Page 2: Workstation Authentication]
+        P2 --> AUTH[PACS Authorization and TLS Session]
     end
 
-    subgraph Ingestion ["2. Data Ingestion and Sequence Calibration"]
-        AUTH --> INGEST{"Input Source"}
-        INGEST -->|"Upload File"| DCM["DICOM / PNG / JPG Binary Parser"]
-        INGEST -->|"Clipboard or URL"| CLIP["Direct Canvas Ingestion"]
-        INGEST -->|"Benchmark Case"| BENCH["12 Reference Clinical Scans"]
-        DCM --> SEQ_NORM["Sequence Normalization: T1+Gd, T2, FLAIR, DWI"]
+    subgraph Ingestion [Data Ingestion and Calibration]
+        AUTH --> INGEST{Input Source}
+        INGEST -->|Upload File| DCM[DICOM / PNG / JPG Binary Parser]
+        INGEST -->|Clipboard or URL| CLIP[Direct Canvas Ingestion]
+        INGEST -->|Benchmark Case| BENCH[12 Reference Clinical Scans]
+        DCM --> SEQ_NORM[Sequence Normalization: T1-Gd, T2, FLAIR, DWI]
         CLIP --> SEQ_NORM
         BENCH --> SEQ_NORM
     end
 
-    subgraph VisionEngine ["3. Vision and Radiomics Engine"]
-        SEQ_NORM --> BET["Brain Extraction Tool - BET Skull Stripping"]
-        BET --> ASYM["Hemispheric Asymmetry and Midline Analysis"]
-        ASYM --> SEG["Sub-Pixel Active Contour Segmentation"]
-        SEG --> BOUNDS["Tumor Boundary Vector and RECIST 1.1 Calipers"]
-        SEG --> GLCM["GLCM Texture Radiomics Matrix"]
-        SEG --> VOL["3D Ellipsoid Volumetric Model"]
-        SEG --> GRAD["Grad-CAM Attention Heatmap"]
+    subgraph VisionEngine [Vision and Radiomics Engine]
+        SEQ_NORM --> BET[Brain Extraction Tool - BET Skull Stripping]
+        BET --> ASYM[Hemispheric Asymmetry and Midline Analysis]
+        ASYM --> SEG[Sub-Pixel Active Contour Segmentation]
+        SEG --> BOUNDS[Tumor Boundary Vector and RECIST 1.1 Calipers]
+        SEG --> GLCM[GLCM Texture Radiomics Matrix]
+        SEG --> VOL[3D Ellipsoid Volumetric Model]
+        SEG --> GRAD[Grad-CAM Attention Heatmap]
     end
 
-    subgraph AI_Classifier ["4. WHO-CNS5 Diagnostic Classification"]
-        BOUNDS --> TENSOR["Vision Transformer and DenseNet Tensor Embedding"]
+    subgraph AI_Classifier [WHO-CNS5 Diagnostic Classification]
+        BOUNDS --> TENSOR[Vision Transformer and DenseNet Tensor Embedding]
         GLCM --> TENSOR
         VOL --> TENSOR
         GRAD --> TENSOR
-        TENSOR --> SOFTMAX["160+ WHO-CNS5 Probability Distribution"]
-        SOFTMAX --> TOP_DIAG["Primary Diagnosis and Differential Ranking"]
+        TENSOR --> SOFTMAX[160+ WHO-CNS5 Probability Distribution]
+        SOFTMAX --> TOP_DIAG[Primary Diagnosis and Differential Ranking]
     end
 
-    subgraph Downstream ["5. Clinical Workstation Modules"]
-        TOP_DIAG --> STUDIO["Diagnostic Studio and Visual Overlays"]
-        TOP_DIAG --> MPR["3D Multi-Planar Orthogonal Views"]
-        TOP_DIAG --> SURG["Neurosurgical Craniotomy Planning"]
-        TOP_DIAG --> RANO["Longitudinal RANO 2.0 Treatment Tracking"]
-        TOP_DIAG --> REPORT["Automated Clinical PDF and Tele-radiology"]
+    subgraph Downstream [Clinical Workstation Modules]
+        TOP_DIAG --> STUDIO[Diagnostic Studio and Visual Overlays]
+        TOP_DIAG --> MPR[3D Multi-Planar Orthogonal Views]
+        TOP_DIAG --> SURG[Neurosurgical Craniotomy Planning]
+        TOP_DIAG --> RANO[Longitudinal RANO 2.0 Treatment Tracking]
+        TOP_DIAG --> REPORT[Automated Clinical PDF and Tele-radiology]
     end
 ```
 
 ---
 
-### 2. Multi-Hospital PACS & Security Topology
+### 2. Multi-Hospital PACS and Security Topology
 
 ```mermaid
 flowchart LR
-    subgraph Hospitals ["Global Hospital Nodes"]
-        H1["Johns Hopkins Hospital - 3.0T Skyra"]
-        H2["Mayo Clinic - 3.0T Prisma"]
-        H3["Charite Berlin - 3.0T Vida"]
-        H4["Harvard MGH - Proton AI Center"]
-        H5["Stanford Health Care - Radiogenomics"]
-        H6["Oxford NHS / Tokyo / Karolinska"]
+    subgraph Hospitals [Global Hospital Nodes]
+        H1[Johns Hopkins Hospital - 3.0T Skyra]
+        H2[Mayo Clinic - 3.0T Prisma]
+        H3[Charite Berlin - 3.0T Vida]
+        H4[Harvard MGH - Proton AI Center]
+        H5[Stanford Health Care - Radiogenomics]
+        H6[Oxford NHS / Tokyo / Karolinska]
     end
 
-    subgraph Security ["Security and HIPAA Gateway"]
-        AUTH_GATE["FIDO2 SmartCard and PKI Token"]
-        TLS["256-Bit TLS 1.3 Secure Tunnel"]
-        AUDIT["Cryptographic Audit Trail"]
+    subgraph Security [Security and HIPAA Gateway]
+        AUTH_GATE[FIDO2 SmartCard and PKI Token]
+        TLS[256-Bit TLS 1.3 Secure Tunnel]
+        AUDIT[Cryptographic Audit Trail]
     end
 
-    subgraph Workstation ["Client-Side AI Workstation"]
-        ENGINE["NeuroScan Client Inference Engine"]
-        STUDIO_UI["Radiologist Diagnostic Studio"]
-        REPORT_GEN["DICOM PDF and HL7 Export"]
+    subgraph Workstation [Client-Side AI Workstation]
+        ENGINE[NeuroScan Client Inference Engine]
+        STUDIO_UI[Radiologist Diagnostic Studio]
+        REPORT_GEN[DICOM PDF and HL7 Export]
     end
 
     Hospitals --> TLS
@@ -113,36 +113,36 @@ flowchart LR
 
 ---
 
-### 3. Radiomics & Computer Vision Engine Flow
+### 3. Radiomics and Computer Vision Engine Flow
 
 ```mermaid
 flowchart LR
-    RAW["Raw Brain MRI Image"] --> PRE["Pre-Processing and Window/Level (240/125)"]
-    PRE --> BET["Brain Extraction Tool - BET Skull Stripping"]
-    BET --> SEED["Adaptive Intensity Clustering"]
-    SEED --> SNAKE["Active Contour Optimization"]
-    SNAKE --> METRICS["Biometrics: Major and Minor Diameters and Volume"]
-    SNAKE --> GLCM["GLCM Co-Occurrence Matrix: Contrast, Entropy, Energy"]
-    METRICS --> FEAT_VEC["High-Dimensional Radiomic Vector"]
+    RAW[Raw Brain MRI Image] --> PRE[Pre-Processing and Window/Level 240/125]
+    PRE --> BET[Brain Extraction Tool - BET Skull Stripping]
+    BET --> SEED[Adaptive Intensity Clustering]
+    SEED --> SNAKE[Active Contour Optimization]
+    SNAKE --> METRICS[Biometrics: Major and Minor Diameters and Volume]
+    SNAKE --> GLCM[GLCM Co-Occurrence Matrix: Contrast, Entropy, Energy]
+    METRICS --> FEAT_VEC[High-Dimensional Radiomic Vector]
     GLCM --> FEAT_VEC
-    FEAT_VEC --> WHO_MATCH["WHO-CNS5 Diagnostic Classifier"]
+    FEAT_VEC --> WHO_MATCH[WHO-CNS5 Diagnostic Classifier]
 ```
 
 ---
 
-### 4. Neurosurgical Planning & Resection Corridor
+### 4. Neurosurgical Planning and Resection Corridor
 
 ```mermaid
 flowchart TD
-    LESION["Segmented 3D Lesion Coordinates"] --> ANAT["Hemisphere and Lobe Localization"]
-    ANAT --> ENTRY["Optimal Skull Entry Calculation"]
-    ENTRY --> TRAJ["Corridor Trajectory: Angle, Depth and Bone Flap"]
-    TRAJ --> ELOQUENT{"Eloquent Cortex Proximity Check"}
-    ELOQUENT -->|"Motor Cortex CST"| DIST_M["Motor Buffer: Safe (15mm plus) or Caution (under 15mm)"]
-    ELOQUENT -->|"Broca Speech Area"| DIST_B["Broca Buffer: Safe (15mm plus) or Caution (under 15mm)"]
-    ELOQUENT -->|"Wernicke Area"| DIST_W["Wernicke Buffer: Safe (15mm plus) or Caution (under 15mm)"]
-    ELOQUENT -->|"Optic Radiation"| DIST_O["Optic Buffer: Safe (15mm plus) or Caution (under 15mm)"]
-    DIST_M --> RESECTION["Resection Feasibility: Gross Total Resection vs Subtotal Resection"]
+    LESION[Segmented 3D Lesion Coordinates] --> ANAT[Hemisphere and Lobe Localization]
+    ANAT --> ENTRY[Optimal Skull Entry Calculation]
+    ENTRY --> TRAJ[Corridor Trajectory: Angle, Depth and Bone Flap]
+    TRAJ --> ELOQUENT{Eloquent Cortex Proximity Check}
+    ELOQUENT -->|Motor Cortex CST| DIST_M[Motor Buffer: Safe 15mm plus or Caution under 15mm]
+    ELOQUENT -->|Broca Speech Area| DIST_B[Broca Buffer: Safe 15mm plus or Caution under 15mm]
+    ELOQUENT -->|Wernicke Area| DIST_W[Wernicke Buffer: Safe 15mm plus or Caution under 15mm]
+    ELOQUENT -->|Optic Radiation| DIST_O[Optic Buffer: Safe 15mm plus or Caution under 15mm]
+    DIST_M --> RESECTION[Resection Feasibility: Gross Total Resection vs Subtotal Resection]
     DIST_B --> RESECTION
     DIST_W --> RESECTION
     DIST_O --> RESECTION
@@ -154,37 +154,37 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    T0["T0: Baseline Pre-Op Scan (Target SPD: 2980 mm2)"] --> T1["T1: 3-Month Follow-Up (Partial Response over 50% SPD Reduction)"]
-    T1 --> T2["T2: 6-Month Adjuvant Phase (Delta Volume -58.4% Stable)"]
+    T0[T0: Baseline Pre-Op Scan - Target SPD: 2980 mm2] --> T1[T1: 3-Month Follow-Up - Partial Response over 50% SPD Reduction]
+    T1 --> T2[T2: 6-Month Adjuvant Phase - Delta Volume -58.4% Stable]
 ```
 
 ---
 
-## 🩺 End-to-End Clinical Workflow Walkthrough
+## End-to-End Clinical Workflow Walkthrough
 
-### Step 1: 2-Page Hospital Portal & PACS Authentication
+### Step 1: 2-Page Hospital Portal and PACS Authentication
 1. **Page 1 (Clinical AI Platform Showcase)**: The workstation launches with real-time capability telemetry (160+ Entities, 99.4% Match, 3.0T MRI, <120ms Latency), global hospital trust badges, and an interactive 3D Neural Connectome visual.
 2. **Page 2 (Hospital Sign-In)**: The clinician selects their medical center (*Johns Hopkins, Mayo Clinic, Charité, Stanford, Harvard MGH, Oxford NHS, Karolinska, Tokyo Univ*), enters their Radiologist ID, confirms security passkey (with password reveal toggle), selects scanning mode, and validates via simulated FIDO2 SmartCard.
 3. Clicking **`⚡ Sign In & Launch Brain MRI Scanner →`** unlocks the clinical suite.
 
-### Step 2: MRI Acquisition & Native DICOM Ingestion
+### Step 2: MRI Acquisition and Native DICOM Ingestion
 * **Multi-Channel Ingestion**: Load local scans (`.dcm`, `.png`, `.jpg`, `.jpeg`, `.webp`), paste image data from clipboard (`Ctrl + V`), load direct URLs, or pick from **12 Clinical Benchmark Presets** (Glioblastoma, Meningioma, Pituitary Adenoma, Schwannoma, Medulloblastoma, etc.).
 * **Client-Side DICOM Binary Parser**: Decodes binary DICOM datasets directly in the browser, extracting patient demographics, acquisition date, series sequence, magnetic field strength (Tesla), pixel spacing, and slice thickness.
 
-### Step 3: Automated Skull Stripping (BET) & Midline Analysis
+### Step 3: Automated Skull Stripping (BET) and Midline Analysis
 * **Intracranial Brain Extraction Tool (BET)**: Automatically strips non-brain skull and scalp tissue while preserving 100% of cortical gray matter, white matter, and ventricles.
 * **Hemispheric Asymmetry Evaluation**: Compares left and right cerebral hemispheres across the longitudinal fissure to quantify midline shift and local mass effect.
 
-### Step 4: Active Contour Segmentation & RECIST 1.1 Biometrics
+### Step 4: Active Contour Segmentation and RECIST 1.1 Biometrics
 * **Sub-Pixel Active Contouring**: Isolates hyperintense contrast-enhancing cores, non-enhancing infiltration, and surrounding vasogenic edema.
-* **RECIST 1.1 & RANO Calipers**: Calculates major axial diameter (mm), perpendicular minor diameter (mm), cross-sectional surface area (mm2), and 3D ellipsoid volume (cm3).
+* **RECIST 1.1 and RANO Calipers**: Calculates major axial diameter (mm), perpendicular minor diameter (mm), cross-sectional surface area (mm2), and 3D ellipsoid volume (cm3).
 * **Interactive Tool Palette**:
   - **Pinpoint (S)**: Click lesion to seed active contouring.
   - **Pan (P)** & **Zoom (+/-)**: High-precision sub-pixel canvas movement.
   - **Caliper (M)**: Manual millimeter distance measurement.
   - **Brush (B)** & **Eraser (X)**: Manual contour sculpting.
 
-### Step 5: High-Order GLCM Texture Radiomics & Grad-CAM
+### Step 5: High-Order GLCM Texture Radiomics and Grad-CAM
 * **GLCM Radiomics Matrix**: Extracts statistical texture distributions including Mean Parenchymal Intensity, Texture Entropy (Sh), GLCM Contrast, Homogeneity, Dissimilarity, and Edema Index.
 * **Grad-CAM Attention Heatmap**: Multi-level visual attention map displaying the neural model's focal inference zones with real-time opacity controls.
 
@@ -197,7 +197,7 @@ flowchart LR
 * Generates orthogonal **Axial (Transverse)**, **Coronal (Frontal)**, and **Sagittal (Lateral)** cross-sections synchronized with the segmented lesion.
 * Features an interactive **3D Lesion Wireframe Mesh** with real-time rotational mouse controls.
 
-### Step 8: Neurosurgical Craniotomy & Trajectory Planning
+### Step 8: Neurosurgical Craniotomy and Trajectory Planning
 * Recommends optimal surgical entry site (*Pterional, Frontolateral, Temporal, Retrosigmoid, etc.*).
 * Computes approach angle (θ°), corridor depth (mm), and bone window size (mm).
 * Calculates millimeter safety distance to eloquent structures (**Corticospinal Motor Cortex**, **Broca's Speech**, **Wernicke's Comprehension**, **Optic Radiation**).
@@ -208,14 +208,14 @@ flowchart LR
 * Computes volumetric delta percentage (ΔVolume %) and RANO status (Complete Response, Partial Response, Stable Disease, Progressive Disease, Pseudoprogression).
 * Generates a 3-way visual comparison grid with volumetric subtraction maps.
 
-### Step 10: Clinical Radiology Report & Voice Synthesis
+### Step 10: Clinical Radiology Report and Voice Synthesis
 * **AI Voice Briefing**: Speech synthesis dictation summarizing key findings.
 * **Voice Addendum Dictation**: Web Speech recognition for voice-to-text notes.
 * **Exportable PDF Report**: Formatted clinical radiology document with institutional letterhead, patient telemetry, embedded scan images, radiomics matrix, and verified PACS digital signature.
 
 ---
 
-## 📚 160+ WHO-CNS5 Brain Tumor Encyclopedia
+## 160+ WHO-CNS5 Brain Tumor Encyclopedia
 
 The platform includes comprehensive clinical dossiers covering **160 distinct WHO 2021 categorized CNS entities**:
 
@@ -236,7 +236,7 @@ The platform includes comprehensive clinical dossiers covering **160 distinct WH
 
 ---
 
-## 📐 Mathematical & Radiomic Formulations
+## Mathematical and Radiomic Formulations
 
 ### 1. 3D Ellipsoid Volumetric Estimation (cm3)
 ```text
@@ -258,18 +258,18 @@ SPD = Σ (D_major * D_minor)
 
 ---
 
-## 💻 Workstation Features & Diagnostic Modes
+## Workstation Features and Diagnostic Modes
 
 * **Window / Level Adjustments**: Real-time Contrast Window (Width) and Brightness Level (Center) with DICOM presets (*Brain 80/40, Stroke 40/40, Tumor 60/45, Bone 2000/500, Default 240/125*).
 * **Multi-Colormap Rendering**: Grayscale, Viridis, Hot Iron, and Rainbow/Jet.
-* **Sensitivity Tuning**: Adjustable AI detection sensitivity slider ($10\% - 95\%$) and algorithmic mode selection (*Hybrid Radiomics, Core-Enhancing, Infiltrative FLAIR, Gradient-Sobel*).
-* **Global Hospital Network Directory (`#tab-network`)**: 48 federated academic medical centers across North America, Europe, and Asia with instant PACS switching.
+* **Sensitivity Tuning**: Adjustable AI detection sensitivity slider (10% - 95%) and algorithmic mode selection (*Hybrid Radiomics, Core-Enhancing, Infiltrative FLAIR, Gradient-Sobel*).
+* **Global Hospital Network Directory (#tab-network)**: 48 federated academic medical centers across North America, Europe, and Asia with instant PACS switching.
 * **International Tele-Radiology 2nd Opinion**: Dispatch consultation packets to international tumor boards.
 * **HIPAA & DICOM Audit Trail**: Cryptographically hashed access event logs for compliance verification.
 
 ---
 
-## 📁 File Architecture
+## File Architecture
 
 ```
 Brain_Tumor/
@@ -292,7 +292,7 @@ Brain_Tumor/
 
 ---
 
-## 🚀 Quick Start Guide
+## Quick Start Guide
 
 ### Direct Browser Launch:
 Simply open **`index.html`** in any modern web browser (**Google Chrome**, **Microsoft Edge**, **Mozilla Firefox**, or **Apple Safari**).
@@ -306,5 +306,5 @@ Then navigate to: **`http://localhost:8000`**
 
 ---
 
-### 📝 Clinical Disclaimers
+### Clinical Disclaimers
 *NEUROSCAN AI is engineered for diagnostic decision support, clinical research, neurosurgical planning, and medical education under FDA 510(k) AI guidelines. Final histopathological confirmation via stereotactic biopsy, molecular sequencing (IDH, 1p/19q, MGMT, TERT), and multidisciplinary tumor board consensus remains standard of care.*
