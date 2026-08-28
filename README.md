@@ -13,11 +13,11 @@ The platform scans brain MRI acquisitions, isolates brain parenchyma via Intracr
 
 ## 📑 Table of Contents
 1. [System Architecture & Pipeline Diagrams](#-system-architecture--pipeline-diagrams)
-   - [End-to-End Diagnostic Pipeline Flowchart](#1-end-to-end-diagnostic-pipeline-flowchart)
-   - [Multi-Hospital PACS & Security Topology](#2-multi-hospital-pacs--security-topology)
-   - [Radiomics & Computer Vision Engine](#3-radiomics--computer-vision-engine)
-   - [Neurosurgical Planning & Resection Corridor](#4-neurosurgical-planning--resection-corridor)
-   - [Longitudinal RANO 2.0 Treatment Response](#5-longitudinal-rano-20-treatment-response)
+   - [1. End-to-End Diagnostic Pipeline Flowchart](#1-end-to-end-diagnostic-pipeline-flowchart)
+   - [2. Multi-Hospital PACS & Security Topology](#2-multi-hospital-pacs--security-topology)
+   - [3. Radiomics & Computer Vision Engine Flow](#3-radiomics--computer-vision-engine-flow)
+   - [4. Neurosurgical Planning & Resection Corridor](#4-neurosurgical-planning--resection-corridor)
+   - [5. Longitudinal RANO 2.0 Treatment Tracking](#5-longitudinal-rano-20-treatment-tracking)
 2. [End-to-End Clinical Workflow Walkthrough](#-end-to-end-clinical-workflow-walkthrough)
 3. [160+ WHO-CNS5 Brain Tumor Encyclopedia](#-160-who-cns5-brain-tumor-encyclopedia)
 4. [Mathematical & Radiomic Formulations](#-mathematical--radiomic-formulations)
@@ -33,48 +33,47 @@ The platform scans brain MRI acquisitions, isolates brain parenchyma via Intracr
 
 ```mermaid
 flowchart TD
-    subgraph Portal ["1. Enterprise 2-Page Hospital Portal"]
-        P1["Page 1: Clinical AI & Neural Connectome Showcase"] --> P2["Page 2: Hospital Workstation Authentication"]
-        P2 -->|"Select Hospital, Radiologist ID & FIDO2 SmartCard"| AUTH["PACS Authorization & TLS Session"]
+    subgraph Portal ["1. Hospital Access Portal"]
+        P1["Page 1: Clinical AI and Connectome Showcase"] --> P2["Page 2: Workstation Authentication"]
+        P2 --> AUTH["PACS Authorization and TLS Session"]
     end
 
-    subgraph Ingestion ["2. Data Ingestion & Sequence Normalization"]
+    subgraph Ingestion ["2. Data Ingestion and Sequence Calibration"]
         AUTH --> INGEST{"Input Source"}
-        INGEST -->|"Upload File"| DCM[".dcm / .png / .jpg Binary Parser"]
-        INGEST -->|"Clipboard / URL"| CLIP["Direct Canvas Rasterizer"]
-        INGEST -->|"Benchmark Preset"| BENCH["12 Procedural Reference Cases"]
-        DCM & CLIP & BENCH --> SEQ_NORM["Multi-Sequence Calibration<br/>(T1+Gd, T2, FLAIR, DWI)"]
+        INGEST -->|"Upload File"| DCM["DICOM / PNG / JPG Binary Parser"]
+        INGEST -->|"Clipboard or URL"| CLIP["Direct Canvas Ingestion"]
+        INGEST -->|"Benchmark Case"| BENCH["12 Reference Clinical Scans"]
+        DCM --> SEQ_NORM["Sequence Normalization: T1+Gd, T2, FLAIR, DWI"]
+        CLIP --> SEQ_NORM
+        BENCH --> SEQ_NORM
     end
 
-    subgraph VisionEngine ["3. Computer Vision & Radiomics Engine"]
-        SEQ_NORM --> BET["Intracranial Brain Extraction Tool (BET)"]
-        BET --> ASYM["Hemispheric Asymmetry & Midline Shift Analysis"]
-        ASYM --> SEG["Sub-Pixel Active Contour & Seed Propagation"]
-        SEG --> BOUNDS["Tumor Boundary Vectorization & RECIST 1.1 Calipers"]
-        SEG --> GLCM["High-Order GLCM Texture Radiomics Matrix"]
-        SEG --> VOL["3D Ellipsoid Volumetric Estimation (cm³)"]
-        SEG --> GRAD["Grad-CAM Attention Heatmap Synthesis"]
+    subgraph VisionEngine ["3. Vision and Radiomics Engine"]
+        SEQ_NORM --> BET["Brain Extraction Tool (BET Skull Stripping)"]
+        BET --> ASYM["Hemispheric Asymmetry and Midline Analysis"]
+        ASYM --> SEG["Sub-Pixel Active Contour Segmentation"]
+        SEG --> BOUNDS["Tumor Boundary Vector and RECIST 1.1 Calipers"]
+        SEG --> GLCM["GLCM Texture Radiomics Matrix"]
+        SEG --> VOL["3D Ellipsoid Volumetric Model"]
+        SEG --> GRAD["Grad-CAM Attention Heatmap"]
     end
 
-    subgraph AI_Classifier ["4. WHO-CNS5 Differential Classifier"]
-        BOUNDS & GLCM & VOL & GRAD --> TENSOR["Vision Transformer (ViT-H/14) + DenseNet Tensor Embedding"]
-        TENSOR --> SOFTMAX["160+ WHO-CNS5 Softmax Multi-Class Distribution"]
-        SOFTMAX --> TOP_DIAG["Primary Diagnosis + Confidence Score + Differential Ranking"]
+    subgraph AI_Classifier ["4. WHO-CNS5 Diagnostic Classification"]
+        BOUNDS --> TENSOR["Vision Transformer and DenseNet Tensor Embedding"]
+        GLCM --> TENSOR
+        VOL --> TENSOR
+        GRAD --> TENSOR
+        TENSOR --> SOFTMAX["160+ WHO-CNS5 Probability Distribution"]
+        SOFTMAX --> TOP_DIAG["Primary Diagnosis and Differential Ranking"]
     end
 
     subgraph Downstream ["5. Clinical Workstation Modules"]
-        TOP_DIAG --> STUDIO["Diagnostic Studio HUD & Visual Overlays"]
-        TOP_DIAG --> MPR["3D & Multi-Planar Orthogonal Reconstruction (Axial, Coronal, Sagittal)"]
-        TOP_DIAG --> SURG["Neurosurgical Craniotomy & Trajectory Planning"]
-        TOP_DIAG --> RANO["Longitudinal RANO 2.0 Treatment Tracking (T₀, T₁, T₂)"]
-        TOP_DIAG --> REPORT["Automated Clinical PDF & Tele-radiology Dispatch"]
+        TOP_DIAG --> STUDIO["Diagnostic Studio and Visual Overlays"]
+        TOP_DIAG --> MPR["3D Multi-Planar Orthogonal Views"]
+        TOP_DIAG --> SURG["Neurosurgical Craniotomy Planning"]
+        TOP_DIAG --> RANO["Longitudinal RANO 2.0 Treatment Tracking"]
+        TOP_DIAG --> REPORT["Automated Clinical PDF and Tele-radiology"]
     end
-
-    classDef primary fill:#00f0ff,stroke:#0088ff,stroke-width:2px,color:#000;
-    classDef dark fill:#0d121c,stroke:rgba(0,240,255,0.4),stroke-width:1px,color:#fff;
-    classDef accent fill:#131a27,stroke:#00e676,stroke-width:1px,color:#fff;
-    class Portal,Ingestion,VisionEngine,AI_Classifier,Downstream dark;
-    class TOP_DIAG,STUDIO primary;
 ```
 
 ---
@@ -82,26 +81,26 @@ flowchart TD
 ### 2. Multi-Hospital PACS & Security Topology
 
 ```mermaid
-graph LR
-    subgraph Hospitals ["Global Hospital Nodes (HL7-FHIR / DICOM TLS)"]
-        H1["Johns Hopkins Hospital<br/>3.0T Skyra / 7T Terra"]
-        H2["Mayo Clinic<br/>3.0T Prisma / PET-MR"]
-        H3["Charité Berlin<br/>3.0T Vida / Neuro-Cure"]
-        H4["Harvard MGH<br/>Proton & AI Center"]
-        H5["Stanford Health Care<br/>Radiogenomics Hub"]
+flowchart LR
+    subgraph Hospitals ["Global Hospital Nodes"]
+        H1["Johns Hopkins Hospital - 3.0T Skyra"]
+        H2["Mayo Clinic - 3.0T Prisma"]
+        H3["Charite Berlin - 3.0T Vida"]
+        H4["Harvard MGH - Proton AI Center"]
+        H5["Stanford Health Care - Radiogenomics"]
         H6["Oxford NHS / Tokyo / Karolinska"]
     end
 
-    subgraph SecurityGateway ["Enterprise Security & HIPAA Gateway"]
-        AUTH_GATE["FIDO2 SmartCard & PKI Cryptotoken"]
-        TLS["256-Bit TLS 1.3 Data Tunnel"]
-        AUDIT["Cryptographic Audit Trail (SOC2 / ISO 27001)"]
+    subgraph Security ["Security and HIPAA Gateway"]
+        AUTH_GATE["FIDO2 SmartCard and PKI Token"]
+        TLS["256-Bit TLS 1.3 Secure Tunnel"]
+        AUDIT["Cryptographic Audit Trail"]
     end
 
-    subgraph CoreWorkstation ["Client-Side WebGL AI Workstation"]
-        ENGINE["NeuroScan Client-Side Inference Engine"]
+    subgraph Workstation ["Client-Side AI Workstation"]
+        ENGINE["NeuroScan Client Inference Engine"]
         STUDIO_UI["Radiologist Diagnostic Studio"]
-        REPORT_GEN["DICOM PDF & HL7 Export"]
+        REPORT_GEN["DICOM PDF and HL7 Export"]
     end
 
     Hospitals --> TLS
@@ -110,38 +109,23 @@ graph LR
     AUDIT --> ENGINE
     ENGINE --> STUDIO_UI
     STUDIO_UI --> REPORT_GEN
-
-    classDef hospNode fill:#0d121c,stroke:#0088ff,stroke-width:1px,color:#fff;
-    classDef secNode fill:#131a27,stroke:#ff9100,stroke-width:1px,color:#fff;
-    classDef coreNode fill:#070a0f,stroke:#00f0ff,stroke-width:2px,color:#fff;
-    class H1,H2,H3,H4,H5,H6 hospNode;
-    class AUTH_GATE,TLS,AUDIT secNode;
-    class ENGINE,STUDIO_UI,REPORT_GEN coreNode;
 ```
 
 ---
 
-### 3. Radiomics & Computer Vision Engine
+### 3. Radiomics & Computer Vision Engine Flow
 
 ```mermaid
 flowchart LR
-    RAW["Raw Brain MRI Image<br/>(512 × 512 DICOM)"] --> PRE["Pre-Processing & Window/Level<br/>(W: 240, L: 125)"]
-    
-    PRE --> BET["Brain Extraction Tool (BET)<br/>Skull Stripping & Meningeal Masking"]
-    
-    BET --> SEED["Adaptive Thresholding &<br/>Intensity Density Clustering"]
-    
-    SEED --> SNAKE["Active Contour Formulation<br/>E_total = E_int + E_image + E_con"]
-    
-    SNAKE --> METRICS["Biometric Vectorization:<br/>• Major Diameter (mm)<br/>• Minor Diameter (mm)<br/>• Area (mm²) & Volume (cm³)"]
-    
-    SNAKE --> GLCM["GLCM Co-Occurrence Matrix (d=1, θ=0°,45°,90°,135°):<br/>• Contrast & Homogeneity<br/>• Entropy & Energy<br/>• Dissimilarity"]
-    
-    METRICS & GLCM --> FEAT_VEC["High-Dimensional Radiomic Vector"]
+    RAW["Raw Brain MRI Image"] --> PRE["Pre-Processing and Window/Level (240/125)"]
+    PRE --> BET["Brain Extraction Tool (BET Skull Stripping)"]
+    BET --> SEED["Adaptive Intensity Clustering"]
+    SEED --> SNAKE["Active Contour Optimization"]
+    SNAKE --> METRICS["Biometrics: Major/Minor Diameters and Volume"]
+    SNAKE --> GLCM["GLCM Co-Occurrence Matrix: Contrast, Entropy, Energy"]
+    METRICS --> FEAT_VEC["High-Dimensional Radiomic Vector"]
+    GLCM --> FEAT_VEC
     FEAT_VEC --> WHO_MATCH["WHO-CNS5 Diagnostic Classifier"]
-
-    classDef step fill:#0d121c,stroke:rgba(0,240,255,0.4),stroke-width:1px,color:#fff;
-    class RAW,PRE,BET,SEED,SNAKE,METRICS,GLCM,FEAT_VEC,WHO_MATCH step;
 ```
 
 ---
@@ -150,41 +134,28 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    LESION["Segmented 3D Lesion Coordinate (X, Y, Z)"] --> ANAT["Anatomical Hemisphere & Lobe Identification"]
-    
-    ANAT --> ENTRY["Optimal Skull Entry Calculation<br/>(Pterional, Frontal, Temporal, Suboccipital)"]
-    
-    ENTRY --> TRAJ["Trajectory Line Equation:<br/>Angle: θ° | Depth: d mm | Bone Flap: Ø mm"]
-    
+    LESION["Segmented 3D Lesion Coordinates"] --> ANAT["Hemisphere and Lobe Localization"]
+    ANAT --> ENTRY["Optimal Skull Entry Calculation"]
+    ENTRY --> TRAJ["Corridor Trajectory: Angle, Depth and Bone Flap"]
     TRAJ --> ELOQUENT{"Eloquent Cortex Proximity Check"}
-    
-    ELOQUENT -->|"Motor Cortex (CST)"| DIST_M["Distance ≥ 15 mm: SAFE<br/>Distance < 15 mm: CAUTION"]
-    ELOQUENT -->|"Broca's Speech Area"| DIST_B["Distance ≥ 15 mm: SAFE<br/>Distance < 15 mm: CAUTION"]
-    ELOQUENT -->|"Wernicke's Area"| DIST_W["Distance ≥ 15 mm: SAFE<br/>Distance < 15 mm: CAUTION"]
-    ELOQUENT -->|"Optic Radiation"| DIST_O["Distance ≥ 15 mm: SAFE<br/>Distance < 15 mm: CAUTION"]
-    
-    DIST_M & DIST_B & DIST_W & DIST_O --> RESECTION["Simulated Resection Feasibility:<br/>• Gross Total Resection (GTR > 95%)<br/>• Subtotal Resection (STR)<br/>• Predicted Residual Core Volume (cm³)"]
-
-    classDef surg fill:#131a27,stroke:#00e676,stroke-width:1px,color:#fff;
-    class LESION,ANAT,ENTRY,TRAJ,ELOQUENT,DIST_M,DIST_B,DIST_W,DIST_O,RESECTION surg;
+    ELOQUENT -->|"Motor Cortex CST"| DIST_M["Motor Buffer: Safe (>= 15mm) or Caution (< 15mm)"]
+    ELOQUENT -->|"Broca Speech Area"| DIST_B["Broca Buffer: Safe (>= 15mm) or Caution (< 15mm)"]
+    ELOQUENT -->|"Wernicke Area"| DIST_W["Wernicke Buffer: Safe (>= 15mm) or Caution (< 15mm)"]
+    ELOQUENT -->|"Optic Radiation"| DIST_O["Optic Buffer: Safe (>= 15mm) or Caution (< 15mm)"]
+    DIST_M --> RESECTION["Resection Feasibility: Gross Total Resection vs Subtotal Resection"]
+    DIST_B --> RESECTION
+    DIST_W --> RESECTION
+    DIST_O --> RESECTION
 ```
 
 ---
 
-### 5. Longitudinal RANO 2.0 Treatment Response
+### 5. Longitudinal RANO 2.0 Treatment Tracking
 
 ```mermaid
-timeline
-    title RANO 2.0 Multi-Timepoint Therapeutic Assessment Timeline
-    section T₀ (Baseline)
-        Pre-Operative MRI Acquisition : Primary Diagnostic Workstation Ingestion
-        Biometric Benchmark : Target SPD = 2,980 mm² • Volume = 24.8 cm³
-    section T₁ (3-Month Post-Op)
-        Post-Surgical + Stupp Protocol : Initial Response Assessment
-        Partial Response (PR) : >50% SPD Reduction • Stable Dexamethasone Dose
-    section T₂ (6-Month Adjuvant)
-        Maintenance Temozolomide : Longitudinal Stability & Recurrence Surveillance
-        Volumetric Subtraction : Delta Volume = -58.4% • Pseudoprogression Unlikely
+flowchart LR
+    T0["T0: Baseline Pre-Op Scan<br/>Primary Diagnostic Benchmark<br/>Target SPD: 2,980 mm²"] --> T1["T1: 3-Month Follow-Up<br/>Post-Surgical + Stupp Protocol<br/>Partial Response (PR): >50% SPD Reduction"]
+    T1 --> T2["T2: 6-Month Adjuvant Phase<br/>Maintenance Temozolomide<br/>Delta Volume: -58.4% (Pseudoprogression Unlikely)"]
 ```
 
 ---
