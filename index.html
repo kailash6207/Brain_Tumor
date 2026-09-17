@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Celebratory Confetti Canvas -->
+  <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;"></canvas>
 
   <!-- Native Hidden File Input -->
   <input type="file" id="scanFileInput" accept="image/*,.dcm,.png,.jpg,.jpeg,.webp" style="display:none;">
@@ -38,6 +40,9 @@
       <div class="portal-nav-links">
         <a href="#landingHeroPage" class="portal-nav-link">🧠 Clinical AI Platform</a>
         <a href="#landingLoginPage" class="portal-nav-link">🏥 Hospital Workstation Login</a>
+        <div class="header-security-badge" id="btnHeaderSecurityBadge" title="Click to view HIPAA Audit Trail &amp; WAF Telemetry">
+          <span class="sec-dot">●</span> 🛡️ WAF ACTIVE &bull; 🦠 SCANNER ON &bull; 🍪 ENCRYPTED
+        </div>
         <a href="#landingLoginPage" class="portal-nav-link btn-cta-landing" id="btnLandingDirectEnter">⚡ Proceed to Login ↓</a>
       </div>
     </nav>
@@ -197,62 +202,135 @@
                 <p class="login-form-sub">Sign in with medical credentials or institutional access key</p>
               </div>
 
-              <!-- Authentication Form -->
-              <form id="loginForm" onsubmit="return false;">
-                <div class="login-form-group">
-                  <label for="loginHospitalSelect">Select Medical Institution</label>
-                  <div class="login-input-wrap">
-                    <select id="loginHospitalSelect">
-                      <option value="hopkins" selected>🏥 Johns Hopkins Hospital (Baltimore, MD, USA)</option>
-                      <option value="mayo">🏥 Mayo Clinic Neuro-Oncology (Rochester, MN, USA)</option>
-                      <option value="charite">🏥 Charité – Universitätsmedizin Berlin (Germany)</option>
-                      <option value="mgh">🏥 Harvard / Massachusetts General Hospital (Boston, USA)</option>
-                      <option value="stanford">🏥 Stanford Health Care (Palo Alto, CA, USA)</option>
-                      <option value="oxford">🏥 Oxford University Hospitals NHS (Oxford, UK)</option>
-                      <option value="karolinska">🏥 Karolinska University Hospital (Stockholm, Sweden)</option>
-                      <option value="tokyo">🏥 The University of Tokyo Hospital (Tokyo, Japan)</option>
-                      <option value="general">🏥 General Clinical Hospital PACS Node</option>
-                    </select>
-                  </div>
+              <!-- Authentication Form (Two-Stage Medical OTP Clearance) -->
+              <form id="loginForm">
+
+                <!-- Status Notice Banner -->
+                <div id="medStatusBanner" class="med-status-banner hidden">
+                  <span id="medStatusIcon">⚠️</span>
+                  <span id="medStatusText">Please enter your medical email.</span>
                 </div>
 
-                <div class="login-form-group">
-                  <label for="loginEmailInput">Clinician / Radiologist ID or Medical Email</label>
-                  <div class="login-input-wrap">
-                    <input type="text" id="loginEmailInput" value="radiologist.neuro@hospital.org" placeholder="radiologist@hospital.org" required>
+                <!-- STAGE 1: Clinician Credentials & Verification Mode -->
+                <div id="loginStage1">
+                  <div class="login-form-group">
+                    <label for="loginHospitalSelect">Select Medical Institution</label>
+                    <div class="login-input-wrap">
+                      <select id="loginHospitalSelect">
+                        <option value="hopkins" selected>🏥 Johns Hopkins Hospital (Baltimore, MD, USA)</option>
+                        <option value="mayo">🏥 Mayo Clinic Neuro-Oncology (Rochester, MN, USA)</option>
+                        <option value="charite">🏥 Charité – Universitätsmedizin Berlin (Germany)</option>
+                        <option value="mgh">🏥 Harvard / Massachusetts General Hospital (Boston, USA)</option>
+                        <option value="stanford">🏥 Stanford Health Care (Palo Alto, CA, USA)</option>
+                        <option value="oxford">🏥 Oxford University Hospitals NHS (Oxford, UK)</option>
+                        <option value="karolinska">🏥 Karolinska University Hospital (Stockholm, Sweden)</option>
+                        <option value="tokyo">🏥 The University of Tokyo Hospital (Tokyo, Japan)</option>
+                        <option value="general">🏥 General Clinical Hospital PACS Node</option>
+                      </select>
+                    </div>
                   </div>
+
+                  <div class="login-form-group">
+                    <label for="loginDeptSelect">Clinical Department / Scanning Mode</label>
+                    <div class="login-input-wrap">
+                      <select id="loginDeptSelect">
+                        <option value="neurorad" selected>Diagnostic Neuroradiology PACS</option>
+                        <option value="neurosurg">Neurosurgical Craniotomy &amp; Resection Planning</option>
+                        <option value="oncology">Neuro-Oncology &amp; RANO 2.0 Response</option>
+                        <option value="emergency">Emergency Stroke &amp; Acute Glioma Triage</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Delivery Method Switcher -->
+                  <div class="med-auth-tab-row">
+                    <button type="button" class="med-tab-btn active" id="tabMedEmail">✉️ Official Email</button>
+                    <button type="button" class="med-tab-btn" id="tabMedPhone">📱 Mobile Phone</button>
+                  </div>
+
+                  <div class="login-form-group" id="groupMedEmail">
+                    <label for="loginEmailInput">Clinician / Radiologist Medical Email</label>
+                    <div class="login-input-wrap">
+                      <input type="email" id="loginEmailInput" value="nhkailash@gmail.com" placeholder="doctor@hospital.org" required>
+                    </div>
+                  </div>
+
+                  <div class="login-form-group hidden" id="groupMedPhone">
+                    <label for="loginPhoneInput">Mobile Phone Number (SMS Clearance)</label>
+                    <div style="display:flex; gap:8px;">
+                      <select id="loginCountryCode" style="width:130px; background:rgba(7,10,15,0.85); border:1.5px solid var(--border-color); border-radius:8px; color:#fff; padding:0.6rem 0.5rem; font-family:var(--font-mono); font-size:0.85rem; outline:none; cursor:pointer;">
+                        <option value="+91" selected>🇮🇳 +91 (IN)</option>
+                        <option value="+1">🇺🇸 +1 (US)</option>
+                        <option value="+44">🇬🇧 +44 (UK)</option>
+                        <option value="+49">🇩🇪 +49 (DE)</option>
+                        <option value="+33">🇫🇷 +33 (FR)</option>
+                        <option value="+971">🇦🇪 +971 (UAE)</option>
+                        <option value="+65">🇸🇬 +65 (SG)</option>
+                      </select>
+                      <div class="login-input-wrap" style="flex:1;">
+                        <input type="tel" id="loginPhoneInput" value="6374347495" placeholder="98765 43210">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Smartcard Tap Simulator -->
+                  <button type="button" class="smartcard-sim-btn" id="btnSimSmartCard">
+                    <span>💳</span> <span id="smartCardStatus">Tap Hospital SmartCard / FIDO2 Biometric Key</span>
+                  </button>
+
+                  <!-- Send Code Action -->
+                  <button type="button" class="btn-login-submit" id="btnSendMedOtp">
+                    <span id="btnSendMedOtpText">⚡ Dispatch 6-Digit Clinical Passcode</span>
+                    <span>→</span>
+                  </button>
                 </div>
 
-                <div class="login-form-group">
-                  <label for="loginPasswordInput">Security Passkey / Password</label>
-                  <div class="login-input-wrap">
-                    <input type="password" id="loginPasswordInput" value="NeuroScan#2026" placeholder="Enter secure passkey" required>
-                    <button type="button" class="btn-toggle-pwd" id="btnTogglePwd" title="Show/Hide Passkey">👁️</button>
+                <!-- STAGE 2: 6-Digit OTP Cross-Checking -->
+                <div id="loginStage2" class="hidden">
+                  <div class="med-otp-target-card">
+                    <div class="med-target-details">
+                      <span class="med-target-badge" id="medTargetBadge">EMAIL</span>
+                      <span class="med-target-value" id="medDisplayTarget">nhkailash@gmail.com</span>
+                    </div>
+                    <button type="button" id="btnMedChangeTarget" class="btn-med-change" title="Change contact info">
+                      ✏️ Edit
+                    </button>
                   </div>
+
+                  <div class="med-channel-notice">
+                    <span class="med-notice-icon">📬</span>
+                    <span class="med-notice-msg" id="medNoticeMsg">
+                      A confidential 6-digit clinical clearance passcode was sent to your email. Check your inbox &amp; spam folder.
+                    </span>
+                  </div>
+
+                  <!-- 6-Digit OTP Inputs -->
+                  <div class="med-otp-boxes-wrapper" id="medOtpBoxesContainer">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="med-otp-digit" data-index="0" autofocus autocomplete="off">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="med-otp-digit" data-index="1" autocomplete="off">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="med-otp-digit" data-index="2" autocomplete="off">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="med-otp-digit" data-index="3" autocomplete="off">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="med-otp-digit" data-index="4" autocomplete="off">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="med-otp-digit" data-index="5" autocomplete="off">
+                  </div>
+
+                  <!-- Timer & Resend Row -->
+                  <div class="med-otp-timer-row">
+                    <div class="med-timer-display">
+                      <span>Expires in <strong id="medTimerCountdown">05:00</strong></span>
+                    </div>
+                    <button type="button" id="btnMedResendOtp" class="btn-med-resend" disabled>
+                      🔄 Resend Passcode
+                    </button>
+                  </div>
+
+                  <!-- Verify & Launch Studio Button -->
+                  <button type="button" class="btn-login-submit" id="btnVerifyMedOtp">
+                    <span id="btnVerifyMedOtpText">⚡ Verify Passcode &amp; Launch MRI Studio</span>
+                    <span>→</span>
+                  </button>
                 </div>
 
-                <div class="login-form-group">
-                  <label for="loginDeptSelect">Clinical Department / Scanning Mode</label>
-                  <div class="login-input-wrap">
-                    <select id="loginDeptSelect">
-                      <option value="neurorad" selected>Diagnostic Neuroradiology PACS</option>
-                      <option value="neurosurg">Neurosurgical Craniotomy &amp; Resection Planning</option>
-                      <option value="oncology">Neuro-Oncology &amp; RANO 2.0 Response</option>
-                      <option value="emergency">Emergency Stroke &amp; Acute Glioma Triage</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- Smartcard Tap Simulator -->
-                <button type="button" class="smartcard-sim-btn" id="btnSimSmartCard">
-                  <span>💳</span> <span id="smartCardStatus">Tap Hospital SmartCard / FIDO2 Biometric Key</span>
-                </button>
-
-                <!-- Sign In Action -->
-                <button type="submit" class="btn-login-submit" id="btnLoginSubmit">
-                  <span>⚡ Sign In &amp; Launch Brain MRI Scanner</span>
-                  <span>→</span>
-                </button>
               </form>
             </div>
 
@@ -310,6 +388,11 @@
       <button class="btn btn-outline" id="btnHeaderGuide" title="View Step-by-Step User Guide">ℹ️ User Guide</button>
       <button class="btn btn-upload-header" id="btnHeaderUpload">⇪ Import Scan</button>
       <button class="btn btn-primary" id="btnExportReport">📄 Export Report</button>
+
+      <!-- Cybersecurity Telemetry Badge in Studio -->
+      <div class="header-security-badge" id="btnHeaderStudioSecurityBadge" title="Click to view HIPAA Audit Trail & WAF Telemetry" style="cursor:pointer;">
+        <span class="sec-dot">●</span> 🛡️ WAF ACTIVE &bull; 🦠 SCANNER ON
+      </div>
 
       <!-- Workstation Profile HUD Widget -->
       <div class="clinician-profile-widget" id="clinicianProfileWidget">
@@ -1344,6 +1427,15 @@
       </div>
       <div class="modal-body">
 
+        <!-- Antivirus Security Scan HUD -->
+        <div id="antivirusStatusHud" class="antivirus-hud hidden">
+          <div class="av-icon" id="avIcon">🛡️</div>
+          <div class="av-details">
+            <div class="av-title" id="avTitle">Cyber Antivirus Scanner</div>
+            <div class="av-sub" id="avSub">Scanning file buffer for malware, scripts, and exploits...</div>
+          </div>
+        </div>
+
         <!-- Drop Zone Area -->
         <div class="upload-dropzone" id="uploadDropZone">
           <div class="drop-icon">⇪</div>
@@ -1508,6 +1600,7 @@
   <script src="tumors_database.js"></script>
   <script src="radiology_engine.js"></script>
   <script src="presets.js"></script>
+  <script src="confetti.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
